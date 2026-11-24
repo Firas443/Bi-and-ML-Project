@@ -10,8 +10,9 @@ settings=json.loads((ROOT/'settings.json').read_text('utf-8-sig')) if (ROOT/'set
 for k,v in settings.items():
     if not re.fullmatch(r'[\w\\.\-]+',v): raise ValueError('Invalid setting: '+k)
 def upstream(path):
-    b=subprocess.check_output(['git','show','3d52d4f48c66da6eccee05ee1050188ae1a4af6d:'+path],cwd=ROOT)
+    b=(ROOT/'scripts/templates'/path).read_bytes()
     return b.decode('utf-16' if b.startswith(b'\xff\xfe') else 'utf-8-sig').replace('\r\n','\n')
+
 def write(path,s): path.write_text('\n'.join(line.rstrip() for line in s.splitlines())+'\n',encoding='utf-8-sig')
 def connection(s):
     if 'Initial Catalog=' in s:
@@ -23,8 +24,7 @@ manifest=[]
 for spec in json.loads((ROOT/'scripts/sources.json').read_text('utf-8-sig')):
     src=ROOT/'data/original'/spec['source']
     if not src.exists():
-        original=ROOT.parent/'DataWarehouseProject_3AI4/ssis-sqlserver/data/original'/spec['source']
-        shutil.copyfile(original,src)
+        raise FileNotFoundError('Run scripts/prepare_workspace.py before configuring: '+str(src))
     b=src.read_bytes()
     for enc in ['utf-8-sig','cp1252','cp850']:
         try: text=b.decode(enc);break
@@ -136,5 +136,5 @@ layout=root.find(D+'DesignTimeProperties')
 if layout is not None:
     layout.text='''<Objects Version="8"><Package design-time-name="Package"><LayoutInfo><GraphLayout Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">'''+''.join(f'<NodeLayout Size="180,42" Id="Package\\{name}" TopLeft="100,{40+i*110}" />' for i,name in enumerate(chain))+'''</GraphLayout></LayoutInfo></Package></Objects>'''
 tree.write(P/'Master.dtsx',encoding='utf-8',xml_declaration=True)
-write(ROOT/'settings.example.json',json.dumps(settings,indent=2))
+# Local settings remain local; keep the example unchanged.
 print('Configured 17 Unicode staging sources and five dimension tables.')

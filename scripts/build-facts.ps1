@@ -1,6 +1,7 @@
 $ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
-$cfg=Get-Content (Join-Path $root 'settings.example.json') -Raw|ConvertFrom-Json
+$cfgFile=if(Test-Path (Join-Path $root 'settings.json')){Join-Path $root 'settings.json'}else{Join-Path $root 'settings.example.json'}
+$cfg=Get-Content $cfgFile -Raw|ConvertFrom-Json
 $g='C:\Windows\Microsoft.NET\assembly'
 $m="$g\GAC_MSIL\Microsoft.SqlServer.ManagedDTS\v4.0_16.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.ManagedDTS.dll"
 $w="$g\GAC_64\Microsoft.SqlServer.DTSRuntimeWrap\v4.0_16.0.0.0__89845dcd8080cc91\Microsoft.SqlServer.DTSRuntimeWrap.dll"

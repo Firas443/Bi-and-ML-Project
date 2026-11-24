@@ -1,6 +1,7 @@
 ﻿$ErrorActionPreference='Stop'
 $root=Split-Path $PSScriptRoot -Parent
-$cfg=Get-Content (Join-Path $root 'settings.example.json') -Raw | ConvertFrom-Json
+$cfgFile=if(Test-Path (Join-Path $root 'settings.json')){Join-Path $root 'settings.json'}else{Join-Path $root 'settings.example.json'}
+$cfg=Get-Content $cfgFile -Raw | ConvertFrom-Json
 $ispac=Join-Path $root 'HealthRetailers_SSIS\bin\Development\HealthRetailers_SSIS.ispac'
 $dtexec='C:\Program Files\Microsoft SQL Server\160\DTS\Binn\DTExec.exe'
 $results=[System.Collections.Generic.List[object]]::new()
