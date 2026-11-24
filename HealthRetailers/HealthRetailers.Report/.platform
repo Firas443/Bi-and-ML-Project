@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "HealthRetailers"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3b0252aa-01e2-435c-a8bd-5f52be7f5343"
+  }
+}

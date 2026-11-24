@@ -1,0 +1,1200 @@
+{
+  "name": "HealthRetailers",
+  "compatibilityLevel": 1601,
+  "model": {
+    "culture": "fr-FR",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "fr-FR",
+    "tables": [
+      {
+        "name": "dim_client",
+        "columns": [
+          {
+            "name": "Company_Id",
+            "dataType": "int64",
+            "sourceColumn": "Company_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Nom",
+            "dataType": "string",
+            "sourceColumn": "Nom",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TypeClient",
+            "dataType": "string",
+            "sourceColumn": "TypeClient",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EstClientIdentifie",
+            "dataType": "boolean",
+            "sourceColumn": "EstClientIdentifie",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Client_SK",
+            "dataType": "int64",
+            "sourceColumn": "Client_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_client",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"dim_client\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Company_Id\", \"Nom\", \"TypeClient\", \"EstClientIdentifie\", \"Client_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Company_Id\", Int64.Type}, {\"Nom\", type text}, {\"TypeClient\", type text}, {\"EstClientIdentifie\", type logical}, {\"Client_SK\", Int64.Type}}, \"fr-FR\"),",
+                "    TextesNettoyes = Table.TransformColumns(TypesCorrects, {{\"Nom\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}, {\"TypeClient\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}})",
+                "in",
+                "    TextesNettoyes"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_fournisseur",
+        "columns": [
+          {
+            "name": "Fournisseur_Id",
+            "dataType": "int64",
+            "sourceColumn": "Fournisseur_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Nom",
+            "dataType": "string",
+            "sourceColumn": "Nom",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Fournisseur_SK",
+            "dataType": "int64",
+            "sourceColumn": "Fournisseur_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_fournisseur",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"dim_fournisseur\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Fournisseur_Id\", \"Nom\", \"Fournisseur_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Fournisseur_Id\", Int64.Type}, {\"Nom\", type text}, {\"Fournisseur_SK\", Int64.Type}}, \"fr-FR\"),",
+                "    TextesNettoyes = Table.TransformColumns(TypesCorrects, {{\"Nom\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}})",
+                "in",
+                "    TextesNettoyes"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_paiement",
+        "columns": [
+          {
+            "name": "PaymentMode_Id",
+            "dataType": "int64",
+            "sourceColumn": "PaymentMode_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "PaymentModeName",
+            "dataType": "string",
+            "sourceColumn": "PaymentModeName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Paiement_SK",
+            "dataType": "int64",
+            "sourceColumn": "Paiement_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_paiement",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"dim_paiement\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"PaymentMode_Id\", \"PaymentModeName\", \"Paiement_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"PaymentMode_Id\", Int64.Type}, {\"PaymentModeName\", type text}, {\"Paiement_SK\", Int64.Type}}, \"fr-FR\"),",
+                "    TextesNettoyes = Table.TransformColumns(TypesCorrects, {{\"PaymentModeName\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}})",
+                "in",
+                "    TextesNettoyes"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_produit",
+        "columns": [
+          {
+            "name": "Product_Id",
+            "dataType": "int64",
+            "sourceColumn": "Product_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Libelle",
+            "dataType": "string",
+            "sourceColumn": "Libelle",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Famille",
+            "dataType": "string",
+            "sourceColumn": "Famille",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Marque",
+            "dataType": "string",
+            "sourceColumn": "Marque",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Produit_SK",
+            "dataType": "int64",
+            "sourceColumn": "Produit_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_produit",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"dim_produit\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Product_Id\", \"Libelle\", \"Famille\", \"Marque\", \"Produit_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Product_Id\", Int64.Type}, {\"Libelle\", type text}, {\"Famille\", type text}, {\"Marque\", type text}, {\"Produit_SK\", Int64.Type}}, \"fr-FR\"),",
+                "    TextesNettoyes = Table.TransformColumns(TypesCorrects, {{\"Libelle\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}, {\"Famille\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}, {\"Marque\", each if _ = null then null else Text.Trim(Text.Clean(_)), type text}})",
+                "in",
+                "    TextesNettoyes"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_temps",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "summarizeBy": "none",
+            "formatString": "dd/MM/yyyy",
+            "isKey": true,
+            "annotations": [
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ]
+          },
+          {
+            "name": "Annee",
+            "dataType": "int64",
+            "sourceColumn": "Annee",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Trimestre",
+            "dataType": "int64",
+            "sourceColumn": "Trimestre",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Mois",
+            "dataType": "int64",
+            "sourceColumn": "Mois",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SemaineISO",
+            "dataType": "int64",
+            "sourceColumn": "SemaineISO",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EstFerie",
+            "dataType": "boolean",
+            "sourceColumn": "EstFerie",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AnneeMois",
+            "dataType": "string",
+            "type": "calculated",
+            "expression": "FORMAT(dim_temps[Date], \"yyyy-MM\")",
+            "sortByColumn": "AnneeMoisTri"
+          },
+          {
+            "name": "AnneeMoisTri",
+            "dataType": "int64",
+            "type": "calculated",
+            "expression": "YEAR(dim_temps[Date])*100+MONTH(dim_temps[Date])",
+            "isHidden": true
+          },
+          {
+            "name": "OrigineDonnees",
+            "dataType": "string",
+            "type": "calculated",
+            "expression": "IF(dim_temps[Date] <= DATE(2025,4,30), \"Réel\", \"Synthétique / hors historique chargé\")"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_temps",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"dim_temps\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"DateKey\", \"Date\", \"Annee\", \"Trimestre\", \"Mois\", \"SemaineISO\", \"EstFerie\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"DateKey\", Int64.Type}, {\"Date\", type date}, {\"Annee\", Int64.Type}, {\"Trimestre\", Int64.Type}, {\"Mois\", Int64.Type}, {\"SemaineISO\", Int64.Type}, {\"EstFerie\", type logical}}, \"fr-FR\")",
+                "in",
+                "    TypesCorrects"
+              ]
+            }
+          }
+        ],
+        "dataCategory": "Time"
+      },
+      {
+        "name": "fait_achats",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "int64",
+            "sourceColumn": "Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Document_Id",
+            "dataType": "int64",
+            "sourceColumn": "Document_Id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Product_Id",
+            "dataType": "int64",
+            "sourceColumn": "Product_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Fournisseur_Id",
+            "dataType": "int64",
+            "sourceColumn": "Fournisseur_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "QuantiteAchetee",
+            "dataType": "decimal",
+            "sourceColumn": "QuantiteAchetee",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "MontantAchat_HT",
+            "dataType": "decimal",
+            "sourceColumn": "MontantAchat_HT",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "Produit_SK",
+            "dataType": "int64",
+            "sourceColumn": "Produit_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Fournisseur_SK",
+            "dataType": "int64",
+            "sourceColumn": "Fournisseur_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fait_achats",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"fait_achats\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Id\", \"Document_Id\", \"DateKey\", \"Product_Id\", \"Fournisseur_Id\", \"QuantiteAchetee\", \"MontantAchat_HT\", \"Produit_SK\", \"Fournisseur_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Id\", Int64.Type}, {\"Document_Id\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"Product_Id\", Int64.Type}, {\"Fournisseur_Id\", Int64.Type}, {\"QuantiteAchetee\", Currency.Type}, {\"MontantAchat_HT\", Currency.Type}, {\"Produit_SK\", Int64.Type}, {\"Fournisseur_SK\", Int64.Type}}, \"fr-FR\")",
+                "in",
+                "    TypesCorrects"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fait_decaissements",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "int64",
+            "sourceColumn": "Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Payment_Id",
+            "dataType": "int64",
+            "sourceColumn": "Payment_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Document_Id",
+            "dataType": "int64",
+            "sourceColumn": "Document_Id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "PaymentMode_Id",
+            "dataType": "int64",
+            "sourceColumn": "PaymentMode_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Fournisseur_Id",
+            "dataType": "int64",
+            "sourceColumn": "Fournisseur_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Amount",
+            "dataType": "decimal",
+            "sourceColumn": "Amount",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "Paiement_SK",
+            "dataType": "int64",
+            "sourceColumn": "Paiement_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Fournisseur_SK",
+            "dataType": "int64",
+            "sourceColumn": "Fournisseur_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fait_decaissements",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"fait_decaissements\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Id\", \"Payment_Id\", \"Document_Id\", \"DateKey\", \"PaymentMode_Id\", \"Fournisseur_Id\", \"Amount\", \"Paiement_SK\", \"Fournisseur_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Id\", Int64.Type}, {\"Payment_Id\", Int64.Type}, {\"Document_Id\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"PaymentMode_Id\", Int64.Type}, {\"Fournisseur_Id\", Int64.Type}, {\"Amount\", Currency.Type}, {\"Paiement_SK\", Int64.Type}, {\"Fournisseur_SK\", Int64.Type}}, \"fr-FR\")",
+                "in",
+                "    TypesCorrects"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fait_encaissements",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "int64",
+            "sourceColumn": "Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Payment_Id",
+            "dataType": "int64",
+            "sourceColumn": "Payment_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Document_Id",
+            "dataType": "int64",
+            "sourceColumn": "Document_Id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "PaymentMode_Id",
+            "dataType": "int64",
+            "sourceColumn": "PaymentMode_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Company_Id",
+            "dataType": "int64",
+            "sourceColumn": "Company_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Amount",
+            "dataType": "decimal",
+            "sourceColumn": "Amount",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "Client_SK",
+            "dataType": "int64",
+            "sourceColumn": "Client_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Paiement_SK",
+            "dataType": "int64",
+            "sourceColumn": "Paiement_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fait_encaissements",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"fait_encaissements\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Id\", \"Payment_Id\", \"Document_Id\", \"DateKey\", \"PaymentMode_Id\", \"Company_Id\", \"Amount\", \"Client_SK\", \"Paiement_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Id\", Int64.Type}, {\"Payment_Id\", Int64.Type}, {\"Document_Id\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"PaymentMode_Id\", Int64.Type}, {\"Company_Id\", Int64.Type}, {\"Amount\", Currency.Type}, {\"Client_SK\", Int64.Type}, {\"Paiement_SK\", Int64.Type}}, \"fr-FR\")",
+                "in",
+                "    TypesCorrects"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fait_stock_actuel",
+        "columns": [
+          {
+            "name": "Product_Id",
+            "dataType": "int64",
+            "sourceColumn": "Product_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "QuantiteActuelle",
+            "dataType": "decimal",
+            "sourceColumn": "QuantiteActuelle",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "QuantiteAlerte",
+            "dataType": "decimal",
+            "sourceColumn": "QuantiteAlerte",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "EstSousSeuil",
+            "dataType": "boolean",
+            "sourceColumn": "EstSousSeuil",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Produit_SK",
+            "dataType": "int64",
+            "sourceColumn": "Produit_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fait_stock_actuel",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"fait_stock_actuel\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Product_Id\", \"DateKey\", \"QuantiteActuelle\", \"QuantiteAlerte\", \"EstSousSeuil\", \"Produit_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Product_Id\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"QuantiteActuelle\", Currency.Type}, {\"QuantiteAlerte\", Currency.Type}, {\"EstSousSeuil\", type logical}, {\"Produit_SK\", Int64.Type}}, \"fr-FR\")",
+                "in",
+                "    TypesCorrects"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fait_ventes",
+        "columns": [
+          {
+            "name": "Id",
+            "dataType": "int64",
+            "sourceColumn": "Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Document_Id",
+            "dataType": "int64",
+            "sourceColumn": "Document_Id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Product_Id",
+            "dataType": "int64",
+            "sourceColumn": "Product_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Company_Id",
+            "dataType": "int64",
+            "sourceColumn": "Company_Id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "QuantiteVendue",
+            "dataType": "decimal",
+            "sourceColumn": "QuantiteVendue",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "Remise_HT",
+            "dataType": "decimal",
+            "sourceColumn": "Remise_HT",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "CA_HT",
+            "dataType": "decimal",
+            "sourceColumn": "CA_HT",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "Cout_HT",
+            "dataType": "decimal",
+            "sourceColumn": "Cout_HT",
+            "summarizeBy": "none",
+            "formatString": "#,0.00;-#,0.00;0.00"
+          },
+          {
+            "name": "Produit_SK",
+            "dataType": "int64",
+            "sourceColumn": "Produit_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Client_SK",
+            "dataType": "int64",
+            "sourceColumn": "Client_SK",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "Famille produit (CC)",
+            "dataType": "string",
+            "type": "calculated",
+            "expression": "RELATED(dim_produit[Famille])",
+            "displayFolder": "Workshop 2 - Colonnes calculées"
+          },
+          {
+            "name": "Prix unitaire net HT (CC)",
+            "dataType": "decimal",
+            "type": "calculated",
+            "expression": "DIVIDE(fait_ventes[CA_HT], fait_ventes[QuantiteVendue])",
+            "formatString": "#,0.00",
+            "displayFolder": "Workshop 2 - Colonnes calculées"
+          },
+          {
+            "name": "Cout unitaire HT (CC)",
+            "dataType": "decimal",
+            "type": "calculated",
+            "expression": "DIVIDE(fait_ventes[Cout_HT], fait_ventes[QuantiteVendue])",
+            "formatString": "#,0.00",
+            "displayFolder": "Workshop 2 - Colonnes calculées"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fait_ventes",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Sql.Database(ServeurSQL, BaseDW, [CreateNavigationProperties=false]),",
+                "    Navigation = Source{[Schema=\"dbo\",Item=\"fait_ventes\"]}[Data],",
+                "    ColonnesUtiles = Table.SelectColumns(Navigation, {\"Id\", \"Document_Id\", \"DateKey\", \"Product_Id\", \"Company_Id\", \"QuantiteVendue\", \"Remise_HT\", \"CA_HT\", \"Cout_HT\", \"Produit_SK\", \"Client_SK\"}),",
+                "    TypesCorrects = Table.TransformColumnTypes(ColonnesUtiles, {{\"Id\", Int64.Type}, {\"Document_Id\", Int64.Type}, {\"DateKey\", Int64.Type}, {\"Product_Id\", Int64.Type}, {\"Company_Id\", Int64.Type}, {\"QuantiteVendue\", Currency.Type}, {\"Remise_HT\", Currency.Type}, {\"CA_HT\", Currency.Type}, {\"Cout_HT\", Currency.Type}, {\"Produit_SK\", Int64.Type}, {\"Client_SK\", Int64.Type}}, \"fr-FR\")",
+                "in",
+                "    TypesCorrects"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Mesures",
+        "columns": [
+          {
+            "name": "Support",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Support",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Mesures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "#table(type table [Support=Int64.Type], {{1}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "CA HT",
+            "expression": "SUM(fait_ventes[CA_HT])",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": "Cahier §6/12 : CA net HT chargé par SSIS, retours inclus, sans double comptage."
+          },
+          {
+            "name": "Quantite vendue",
+            "expression": "SUM(fait_ventes[QuantiteVendue])",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "Nombre de ventes",
+            "expression": "DISTINCTCOUNT(fait_ventes[Document_Id])",
+            "formatString": "#,0",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "Panier moyen",
+            "expression": "DIVIDE([CA HT], [Nombre de ventes])",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "CA mois precedent",
+            "expression": "IF(HASONEVALUE(dim_temps[AnneeMois]), CALCULATE([CA HT], DATEADD(dim_temps[Date], -1, MONTH)))",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "Croissance CA MoM",
+            "expression": "VAR Precedent = [CA mois precedent] RETURN IF(NOT ISBLANK([CA HT]) && NOT ISBLANK(Precedent), DIVIDE([CA HT]-Precedent, Precedent))",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "displayFolder": "01 Ventes",
+            "description": "Cahier : (CA N - CA N-1) / CA N-1 ; N = mois. BLANK si période de comparaison absente ou nulle. Comparer des mois complets ; septembre 2024 est partiel."
+          },
+          {
+            "name": "CA annee precedente",
+            "expression": "IF(HASONEVALUE(dim_temps[AnneeMois]), CALCULATE([CA HT], DATEADD(dim_temps[Date], -1, YEAR)))",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "Croissance CA YoY",
+            "expression": "VAR Precedent = [CA annee precedente] RETURN IF(NOT ISBLANK([CA HT]) && NOT ISBLANK(Precedent), DIVIDE([CA HT]-Precedent, Precedent))",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "Cout HT connu",
+            "expression": "SUM(fait_ventes[Cout_HT])",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "CA avec cout connu",
+            "expression": "CALCULATE([CA HT], KEEPFILTERS(NOT ISBLANK(fait_ventes[Cout_HT])))",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": ""
+          },
+          {
+            "name": "Marge HT",
+            "expression": "SUMX(FILTER(fait_ventes, NOT ISBLANK(fait_ventes[Cout_HT])), fait_ventes[CA_HT]-fait_ventes[Cout_HT])",
+            "formatString": "#,0.00",
+            "displayFolder": "01 Ventes",
+            "description": "Cahier §12 : seules les lignes dont le coût est connu entrent dans les deux termes de la marge."
+          },
+          {
+            "name": "Lignes sans cout",
+            "expression": "COUNTROWS(FILTER(fait_ventes, ISBLANK(fait_ventes[Cout_HT])))",
+            "formatString": "#,0",
+            "displayFolder": "07 Qualite",
+            "description": ""
+          },
+          {
+            "name": "Couverture cout",
+            "expression": "DIVIDE(COUNTROWS(FILTER(fait_ventes, NOT ISBLANK(fait_ventes[Cout_HT]))), COUNTROWS(fait_ventes))",
+            "formatString": "0.00%",
+            "displayFolder": "07 Qualite",
+            "description": ""
+          },
+          {
+            "name": "Clients actifs",
+            "expression": "CALCULATE(DISTINCTCOUNT(fait_ventes[Company_Id]), KEEPFILTERS(dim_client[EstClientIdentifie] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "02 Clients",
+            "description": "Clients identifiés ayant au moins une ligne de vente dans le contexte courant ; comptoir exclu."
+          },
+          {
+            "name": "CA clients identifies",
+            "expression": "CALCULATE([CA HT], KEEPFILTERS(dim_client[EstClientIdentifie] = TRUE()))",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Clients",
+            "description": ""
+          },
+          {
+            "name": "Ventes clients identifies",
+            "expression": "CALCULATE([Nombre de ventes], KEEPFILTERS(dim_client[EstClientIdentifie] = TRUE()))",
+            "formatString": "#,0",
+            "displayFolder": "02 Clients",
+            "description": ""
+          },
+          {
+            "name": "Panier clients identifies",
+            "expression": "DIVIDE([CA clients identifies], [Ventes clients identifies])",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Clients",
+            "description": ""
+          },
+          {
+            "name": "Frequence achat client",
+            "expression": "DIVIDE([Ventes clients identifies], [Clients actifs])",
+            "formatString": "#,0.00",
+            "displayFolder": "02 Clients",
+            "description": ""
+          },
+          {
+            "name": "Stock disponible",
+            "expression": "SUM(fait_stock_actuel[QuantiteActuelle])",
+            "formatString": "#,0.00",
+            "displayFolder": "03 Stock",
+            "description": "Snapshot actuel non daté dans le DW ; non additif dans le temps. Pas de relation temporelle inventée."
+          },
+          {
+            "name": "Produits en rupture",
+            "expression": "CALCULATE(DISTINCTCOUNT(fait_stock_actuel[Product_Id]), KEEPFILTERS(fait_stock_actuel[QuantiteActuelle] = 0))",
+            "formatString": "#,0",
+            "displayFolder": "03 Stock",
+            "description": ""
+          },
+          {
+            "name": "Produits en stock faible",
+            "expression": "COUNTROWS(FILTER(fait_stock_actuel, fait_stock_actuel[QuantiteActuelle] > 0 && NOT ISBLANK(fait_stock_actuel[QuantiteAlerte]) && fait_stock_actuel[QuantiteActuelle] <= fait_stock_actuel[QuantiteAlerte]))",
+            "formatString": "#,0",
+            "displayFolder": "03 Stock",
+            "description": ""
+          },
+          {
+            "name": "Produits sans seuil",
+            "expression": "COUNTROWS(FILTER(fait_stock_actuel, ISBLANK(fait_stock_actuel[QuantiteAlerte])))",
+            "formatString": "#,0",
+            "displayFolder": "07 Qualite",
+            "description": ""
+          },
+          {
+            "name": "Montant encaisse",
+            "expression": "SUM(fait_encaissements[Amount])",
+            "formatString": "#,0.00",
+            "displayFolder": "04 Paiements",
+            "description": ""
+          },
+          {
+            "name": "Montant paye aux fournisseurs",
+            "expression": "SUM(fait_decaissements[Amount])",
+            "formatString": "#,0.00",
+            "displayFolder": "04 Paiements",
+            "description": ""
+          },
+          {
+            "name": "Tresorerie nette",
+            "expression": "[Montant encaisse] - [Montant paye aux fournisseurs]",
+            "formatString": "#,0.00",
+            "displayFolder": "04 Paiements",
+            "description": ""
+          },
+          {
+            "name": "Nombre encaissements",
+            "expression": "DISTINCTCOUNT(fait_encaissements[Payment_Id])",
+            "formatString": "#,0",
+            "displayFolder": "04 Paiements",
+            "description": ""
+          },
+          {
+            "name": "Nombre decaissements",
+            "expression": "DISTINCTCOUNT(fait_decaissements[Payment_Id])",
+            "formatString": "#,0",
+            "displayFolder": "04 Paiements",
+            "description": ""
+          },
+          {
+            "name": "Nombre de paiements",
+            "expression": "COUNTROWS(DISTINCT(UNION(SELECTCOLUMNS(fait_encaissements, \"Payment\", fait_encaissements[Payment_Id]), SELECTCOLUMNS(fait_decaissements, \"Payment\", fait_decaissements[Payment_Id]))))",
+            "formatString": "#,0",
+            "displayFolder": "04 Paiements",
+            "description": "DISTINCTCOUNT logique de Payment_Id sur les deux faits ; les imputations ne sont pas des paiements supplémentaires."
+          },
+          {
+            "name": "Montant regle vente",
+            "expression": "CALCULATE([Montant encaisse], KEEPFILTERS(TREATAS(VALUES(fait_ventes[Document_Id]), fait_encaissements[Document_Id])))",
+            "formatString": "#,0.00",
+            "displayFolder": "05 Reglements documents",
+            "description": "Imputations des documents de vente visibles ; ne pas sommer après répétition par ligne produit. La période filtre la date de paiement et de vente."
+          },
+          {
+            "name": "Montant regle facture fournisseur",
+            "expression": "CALCULATE([Montant paye aux fournisseurs], KEEPFILTERS(TREATAS(VALUES(fait_achats[Document_Id]), fait_decaissements[Document_Id])))",
+            "formatString": "#,0.00",
+            "displayFolder": "05 Reglements documents",
+            "description": ""
+          },
+          {
+            "name": "Encaissements non affectes",
+            "expression": "CALCULATE([Montant encaisse], KEEPFILTERS(ISBLANK(fait_encaissements[Document_Id])))",
+            "formatString": "#,0.00",
+            "displayFolder": "07 Qualite",
+            "description": ""
+          },
+          {
+            "name": "Decaissements non affectes",
+            "expression": "CALCULATE([Montant paye aux fournisseurs], KEEPFILTERS(ISBLANK(fait_decaissements[Document_Id])))",
+            "formatString": "#,0.00",
+            "displayFolder": "07 Qualite",
+            "description": ""
+          },
+          {
+            "name": "Achats HT",
+            "expression": "SUM(fait_achats[MontantAchat_HT])",
+            "formatString": "#,0.00",
+            "displayFolder": "06 Achats",
+            "description": ""
+          },
+          {
+            "name": "Quantite achetee",
+            "expression": "SUM(fait_achats[QuantiteAchetee])",
+            "formatString": "#,0.00",
+            "displayFolder": "06 Achats",
+            "description": ""
+          },
+          {
+            "name": "Nombre factures fournisseurs",
+            "expression": "DISTINCTCOUNT(fait_achats[Document_Id])",
+            "formatString": "#,0",
+            "displayFolder": "06 Achats",
+            "description": ""
+          },
+          {
+            "name": "Derniere date ventes",
+            "expression": "MAXX(ALL(fait_ventes), RELATED(dim_temps[Date]))",
+            "formatString": "dd/MM/yyyy",
+            "displayFolder": "07 Qualite",
+            "description": ""
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "4306332c-f344-569a-83c8-65bdea1f2264",
+        "fromTable": "fait_ventes",
+        "fromColumn": "DateKey",
+        "toTable": "dim_temps",
+        "toColumn": "DateKey",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "c9c2d8ca-3d9f-5690-8020-08ab46e6b85a",
+        "fromTable": "fait_ventes",
+        "fromColumn": "Produit_SK",
+        "toTable": "dim_produit",
+        "toColumn": "Produit_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "d5be373d-ddea-5fd8-bd1a-3547b34330ed",
+        "fromTable": "fait_ventes",
+        "fromColumn": "Client_SK",
+        "toTable": "dim_client",
+        "toColumn": "Client_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "60873d1d-62f0-5b47-8db0-58aecd3b35f7",
+        "fromTable": "fait_achats",
+        "fromColumn": "DateKey",
+        "toTable": "dim_temps",
+        "toColumn": "DateKey",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "ae2a65e2-1d7a-527a-999d-74349e8d1001",
+        "fromTable": "fait_achats",
+        "fromColumn": "Produit_SK",
+        "toTable": "dim_produit",
+        "toColumn": "Produit_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "2f15776d-6858-56d0-97bb-f78d905d997f",
+        "fromTable": "fait_achats",
+        "fromColumn": "Fournisseur_SK",
+        "toTable": "dim_fournisseur",
+        "toColumn": "Fournisseur_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "e40b1655-9b3f-525e-a191-b1153c24626b",
+        "fromTable": "fait_encaissements",
+        "fromColumn": "DateKey",
+        "toTable": "dim_temps",
+        "toColumn": "DateKey",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "5a85ec1f-293d-51f5-beff-118837997024",
+        "fromTable": "fait_encaissements",
+        "fromColumn": "Client_SK",
+        "toTable": "dim_client",
+        "toColumn": "Client_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "7936b452-9ab1-5bea-82d9-8b04e4c409b2",
+        "fromTable": "fait_encaissements",
+        "fromColumn": "Paiement_SK",
+        "toTable": "dim_paiement",
+        "toColumn": "Paiement_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "8cc3d2fe-0e89-51a6-9a20-8d74c6097ac9",
+        "fromTable": "fait_decaissements",
+        "fromColumn": "DateKey",
+        "toTable": "dim_temps",
+        "toColumn": "DateKey",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "a37a96c8-8994-5d3a-83c5-771badb9232a",
+        "fromTable": "fait_decaissements",
+        "fromColumn": "Fournisseur_SK",
+        "toTable": "dim_fournisseur",
+        "toColumn": "Fournisseur_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "d225665d-fc63-5f5a-b154-b313d41d09d7",
+        "fromTable": "fait_decaissements",
+        "fromColumn": "Paiement_SK",
+        "toTable": "dim_paiement",
+        "toColumn": "Paiement_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      },
+      {
+        "name": "9d40d91f-901c-5390-b4f5-cefe0fff18a0",
+        "fromTable": "fait_stock_actuel",
+        "fromColumn": "Produit_SK",
+        "toTable": "dim_produit",
+        "toColumn": "Produit_SK",
+        "fromCardinality": "many",
+        "toCardinality": "one",
+        "crossFilteringBehavior": "oneDirection",
+        "isActive": true
+      }
+    ],
+    "expressions": [
+      {
+        "name": "ServeurSQL",
+        "kind": "m",
+        "expression": "\"localhost\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      },
+      {
+        "name": "BaseDW",
+        "kind": "m",
+        "expression": "\"DW_Health_Dimensions\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      },
+      {
+        "name": "Atelier1_Pays_Demo",
+        "kind": "m",
+        "expression": "// Teaching data only: remove duplicate (country, city) pairs.\nlet\n    Source = #table(type table [Country=text, City=text], {\n        {\"France\",\"Paris\"},{\"France\",\"Paris\"},\n        {\"France\",\"Lyon\"},{\"United States\",\"Los Angeles\"},\n        {\"United States\",\"Los Angeles\"},{\"Australia\",\"Melbourne\"},\n        {\"Australia\",\"Melbourne\"}\n    }),\n    PairesUniques = Table.Distinct(Source, {\"Country\",\"City\"})\nin\n    PairesUniques\n"
+      },
+      {
+        "name": "Atelier1_Ventes_Demo",
+        "kind": "m",
+        "expression": "// Teaching data only. Never apply Table.Skip(2) to the cleaned warehouse.\nlet\n    DonneesPedagogiques = #table(\n        {\"Column1\", \"Column2\", \"Column3\", \"Column4\", \"Column5\", \"Column6\", \"Column7\"},\n        {\n            {null,null,null,null,null,null,null},\n            {null,null,null,null,null,null,null},\n            {\"Trans Date\",\"Product Code\",\"Quantity sold\",\"Value\",\"RetCity\",\"Urgent\",\"Empty\"},\n            {\"2025-01-05\",\"DEMO-001\",\"2\",\"12.50\",\" Paris \",\"No\",null},\n            {\"2025-01-06\",\"DEMO-002\",\"incorrect\",\"9.00\",\"Lyon\",\"No\",null},\n            {\"2025-01-07\",\"DEMO-003\",\"3\",\"8.00\",\"Lille\",\"Yes\",null}\n        }\n    ),\n    LignesSuperieuresSupprimees = Table.Skip(DonneesPedagogiques, 2),\n    EntetesPromues = Table.PromoteHeaders(LignesSuperieuresSupprimees, [PromoteAllScalars=true]),\n    ColonnesUtiles = Table.SelectColumns(EntetesPromues, {\"Trans Date\",\"Product Code\",\"Quantity sold\",\"Value\",\"RetCity\"}),\n    ColonnesRenommees = Table.RenameColumns(ColonnesUtiles, {{\"Trans Date\",\"Transaction Date\"},{\"Value\",\"Sale Price\"},{\"RetCity\",\"Retailer City\"}}),\n    TypesCorrects = Table.TransformColumnTypes(ColonnesRenommees, {{\"Transaction Date\",type date},{\"Product Code\",type text},{\"Quantity sold\",Int64.Type},{\"Sale Price\",Currency.Type},{\"Retailer City\",type text}}, \"en-US\"),\n    SansErreurs = Table.RemoveRowsWithErrors(TypesCorrects, {\"Quantity sold\"}),\n    TextesNettoyes = Table.TransformColumns(SansErreurs, {{\"Retailer City\",Text.Trim,type text}})\nin\n    TextesNettoyes\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"ServeurSQL\", \"BaseDW\", \"dim_client\", \"dim_fournisseur\", \"dim_paiement\", \"dim_produit\", \"dim_temps\", \"fait_achats\", \"fait_decaissements\", \"fait_encaissements\", \"fait_stock_actuel\", \"fait_ventes\", \"Mesures\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}

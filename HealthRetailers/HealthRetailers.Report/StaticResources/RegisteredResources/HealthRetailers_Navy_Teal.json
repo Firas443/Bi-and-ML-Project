@@ -1,0 +1,80 @@
+{
+  "name": "HealthRetailers — Navy & Teal",
+  "dataColors": [
+    "#087F8C",
+    "#D59A39",
+    "#557B99",
+    "#91B8AA",
+    "#C56D58",
+    "#7B7593",
+    "#B5C9C0",
+    "#778D94"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#203F4D",
+  "tableAccent": "#087F8C",
+  "good": "#288365",
+  "neutral": "#D59A39",
+  "bad": "#B95A48",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#203F4D"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 11,
+      "color": "#203F4D"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#627780"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 28,
+      "color": "#203F4D"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#DBE6E3"
+              }
+            },
+            "radius": 10
+          }
+        ],
+        "title": [
+          {
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 12,
+            "fontColor": {
+              "solid": {
+                "color": "#203F4D"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

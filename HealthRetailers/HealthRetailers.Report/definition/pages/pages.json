@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "01_synthese",
+    "02_commercial",
+    "03_clients",
+    "04_stock",
+    "05_paiements",
+    "06_achats",
+    "07_documents"
+  ],
+  "activePageName": "01_synthese"
+}
