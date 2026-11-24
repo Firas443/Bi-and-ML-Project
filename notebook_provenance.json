@@ -1,0 +1,30 @@
+[
+  {
+    "file": "health_retailers_cash_anomaly_v2_executed.ipynb",
+    "original_sha256": "60f65fd9fe08e9ca6b3549e9a0c9e51ca982b50ce1d8d2fe04098dd8c3a2ba69",
+    "original_executed_code_cells": 12,
+    "code_cells": 12,
+    "changes": "Portable data paths only; original saved analytical outputs retained, setup-cell output cleared."
+  },
+  {
+    "file": "health_retailers_sales_anomaly_complete_commented.ipynb",
+    "original_sha256": "d71e44a377a5ee723096024cda56c626771a836cb5e53df5e82426157887d4ae",
+    "original_executed_code_cells": 12,
+    "code_cells": 12,
+    "changes": "Portable data paths only; original saved analytical outputs retained, setup-cell output cleared."
+  },
+  {
+    "file": "health_retailers_customer_segmentation_complete_commented.ipynb",
+    "original_sha256": "bf55ef4245369a5dc72120800a4e521420234bb97ff53294de3d1077cdaaf9e4",
+    "original_executed_code_cells": 11,
+    "code_cells": 11,
+    "changes": "Portable data paths only; original saved analytical outputs retained, setup-cell output cleared."
+  },
+  {
+    "file": "health_retailers_demand_forecast_complete_commented.ipynb",
+    "original_sha256": "a700be4fc93bbb16f882749135c75c88f166e94a5a96674419881af1fbb579f5",
+    "original_executed_code_cells": 14,
+    "code_cells": 14,
+    "changes": "Portable data paths only; original saved analytical outputs retained, setup-cell output cleared."
+  }
+]
