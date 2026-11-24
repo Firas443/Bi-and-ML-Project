@@ -1,0 +1,961 @@
+{
+  "database": "DW_Health_Dimensions",
+  "columns": [
+    {
+      "tbl": "dim_client",
+      "col": "Company_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "dim_client",
+      "col": "Nom",
+      "typ": "nvarchar",
+      "max_length": 400,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "dim_client",
+      "col": "TypeClient",
+      "typ": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "dim_client",
+      "col": "EstClientIdentifie",
+      "typ": "bit",
+      "max_length": 1,
+      "precision": 1,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "dim_client",
+      "col": "Client_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": true,
+      "column_id": 5
+    },
+    {
+      "tbl": "dim_fournisseur",
+      "col": "Fournisseur_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "dim_fournisseur",
+      "col": "Nom",
+      "typ": "nvarchar",
+      "max_length": 400,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "dim_fournisseur",
+      "col": "Fournisseur_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": true,
+      "column_id": 3
+    },
+    {
+      "tbl": "dim_paiement",
+      "col": "PaymentMode_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "dim_paiement",
+      "col": "PaymentModeName",
+      "typ": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "dim_paiement",
+      "col": "Paiement_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": true,
+      "column_id": 3
+    },
+    {
+      "tbl": "dim_produit",
+      "col": "Product_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "dim_produit",
+      "col": "Libelle",
+      "typ": "nvarchar",
+      "max_length": 510,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "dim_produit",
+      "col": "Famille",
+      "typ": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "dim_produit",
+      "col": "Marque",
+      "typ": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "dim_produit",
+      "col": "Produit_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": true,
+      "column_id": 5
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "DateKey",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "Date",
+      "typ": "date",
+      "max_length": 3,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "Annee",
+      "typ": "smallint",
+      "max_length": 2,
+      "precision": 5,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "Trimestre",
+      "typ": "tinyint",
+      "max_length": 1,
+      "precision": 3,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "Mois",
+      "typ": "tinyint",
+      "max_length": 1,
+      "precision": 3,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 5
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "SemaineISO",
+      "typ": "tinyint",
+      "max_length": 1,
+      "precision": 3,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 6
+    },
+    {
+      "tbl": "dim_temps",
+      "col": "EstFerie",
+      "typ": "bit",
+      "max_length": 1,
+      "precision": 1,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 7
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "Document_Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "DateKey",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "Product_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "Fournisseur_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 5
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "QuantiteAchetee",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 6
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "MontantAchat_HT",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 7
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "Produit_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 8
+    },
+    {
+      "tbl": "fait_achats",
+      "col": "Fournisseur_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 9
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Payment_Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Document_Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "DateKey",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "PaymentMode_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 5
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Fournisseur_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 6
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Amount",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 7
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Paiement_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 8
+    },
+    {
+      "tbl": "fait_decaissements",
+      "col": "Fournisseur_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 9
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Payment_Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Document_Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "DateKey",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "PaymentMode_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 5
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Company_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 6
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Amount",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 7
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Client_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 8
+    },
+    {
+      "tbl": "fait_encaissements",
+      "col": "Paiement_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 9
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "col": "Product_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "col": "DateKey",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "col": "QuantiteActuelle",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "col": "QuantiteAlerte",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "col": "EstSousSeuil",
+      "typ": "bit",
+      "max_length": 1,
+      "precision": 1,
+      "scale": 0,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 5
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "col": "Produit_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 6
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 1
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Document_Id",
+      "typ": "bigint",
+      "max_length": 8,
+      "precision": 19,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 2
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "DateKey",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 3
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Product_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 4
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Company_Id",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 5
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "QuantiteVendue",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 6
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Remise_HT",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 7
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "CA_HT",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 8
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Cout_HT",
+      "typ": "decimal",
+      "max_length": 9,
+      "precision": 18,
+      "scale": 4,
+      "is_nullable": true,
+      "is_identity": false,
+      "column_id": 9
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Produit_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 10
+    },
+    {
+      "tbl": "fait_ventes",
+      "col": "Client_SK",
+      "typ": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_nullable": false,
+      "is_identity": false,
+      "column_id": 11
+    }
+  ],
+  "unique_keys": [
+    {
+      "tbl": "dim_client",
+      "name": "PK_dim_client",
+      "col": "Client_SK",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "dim_client",
+      "name": "UQ_dim_client_business",
+      "col": "Company_Id",
+      "key_ordinal": 1,
+      "is_primary_key": false
+    },
+    {
+      "tbl": "dim_fournisseur",
+      "name": "PK_dim_fournisseur",
+      "col": "Fournisseur_SK",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "dim_fournisseur",
+      "name": "UQ_dim_fournisseur_business",
+      "col": "Fournisseur_Id",
+      "key_ordinal": 1,
+      "is_primary_key": false
+    },
+    {
+      "tbl": "dim_paiement",
+      "name": "PK_dim_paiement",
+      "col": "Paiement_SK",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "dim_paiement",
+      "name": "UQ_dim_paiement_business",
+      "col": "PaymentMode_Id",
+      "key_ordinal": 1,
+      "is_primary_key": false
+    },
+    {
+      "tbl": "dim_produit",
+      "name": "PK_dim_produit",
+      "col": "Produit_SK",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "dim_produit",
+      "name": "UQ_dim_produit_business",
+      "col": "Product_Id",
+      "key_ordinal": 1,
+      "is_primary_key": false
+    },
+    {
+      "tbl": "dim_temps",
+      "name": "PK__dim_temp__40DF45E3B3C563E3",
+      "col": "DateKey",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "fait_achats",
+      "name": "PK_fait_achats",
+      "col": "Id",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "fait_decaissements",
+      "name": "PK_fait_decaissements",
+      "col": "Id",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "fait_encaissements",
+      "name": "PK_fait_encaissements",
+      "col": "Id",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "name": "PK_fait_stock_actuel",
+      "col": "Produit_SK",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    },
+    {
+      "tbl": "fait_stock_actuel",
+      "name": "UQ_fait_stock_actuel_product",
+      "col": "Product_Id",
+      "key_ordinal": 1,
+      "is_primary_key": false
+    },
+    {
+      "tbl": "fait_ventes",
+      "name": "PK_fait_ventes",
+      "col": "Id",
+      "key_ordinal": 1,
+      "is_primary_key": true
+    }
+  ],
+  "foreign_keys": [
+    {
+      "name": "FK_encaissements_client",
+      "fact": "fait_encaissements",
+      "fk": "Client_SK",
+      "dimension": "dim_client",
+      "pk": "Client_SK"
+    },
+    {
+      "name": "FK_ventes_client",
+      "fact": "fait_ventes",
+      "fk": "Client_SK",
+      "dimension": "dim_client",
+      "pk": "Client_SK"
+    },
+    {
+      "name": "FK_achats_fournisseur",
+      "fact": "fait_achats",
+      "fk": "Fournisseur_SK",
+      "dimension": "dim_fournisseur",
+      "pk": "Fournisseur_SK"
+    },
+    {
+      "name": "FK_decaissements_fournisseur",
+      "fact": "fait_decaissements",
+      "fk": "Fournisseur_SK",
+      "dimension": "dim_fournisseur",
+      "pk": "Fournisseur_SK"
+    },
+    {
+      "name": "FK_decaissements_paiement",
+      "fact": "fait_decaissements",
+      "fk": "Paiement_SK",
+      "dimension": "dim_paiement",
+      "pk": "Paiement_SK"
+    },
+    {
+      "name": "FK_encaissements_paiement",
+      "fact": "fait_encaissements",
+      "fk": "Paiement_SK",
+      "dimension": "dim_paiement",
+      "pk": "Paiement_SK"
+    },
+    {
+      "name": "FK_achats_produit",
+      "fact": "fait_achats",
+      "fk": "Produit_SK",
+      "dimension": "dim_produit",
+      "pk": "Produit_SK"
+    },
+    {
+      "name": "FK_stock_produit",
+      "fact": "fait_stock_actuel",
+      "fk": "Produit_SK",
+      "dimension": "dim_produit",
+      "pk": "Produit_SK"
+    },
+    {
+      "name": "FK_ventes_produit",
+      "fact": "fait_ventes",
+      "fk": "Produit_SK",
+      "dimension": "dim_produit",
+      "pk": "Produit_SK"
+    },
+    {
+      "name": "FK_achats_temps",
+      "fact": "fait_achats",
+      "fk": "DateKey",
+      "dimension": "dim_temps",
+      "pk": "DateKey"
+    },
+    {
+      "name": "FK_decaissements_temps",
+      "fact": "fait_decaissements",
+      "fk": "DateKey",
+      "dimension": "dim_temps",
+      "pk": "DateKey"
+    },
+    {
+      "name": "FK_encaissements_temps",
+      "fact": "fait_encaissements",
+      "fk": "DateKey",
+      "dimension": "dim_temps",
+      "pk": "DateKey"
+    },
+    {
+      "name": "FK_stock_temps",
+      "fact": "fait_stock_actuel",
+      "fk": "DateKey",
+      "dimension": "dim_temps",
+      "pk": "DateKey"
+    },
+    {
+      "name": "FK_ventes_temps",
+      "fact": "fait_ventes",
+      "fk": "DateKey",
+      "dimension": "dim_temps",
+      "pk": "DateKey"
+    }
+  ],
+  "row_counts": {
+    "dim_client": 82,
+    "dim_fournisseur": 116,
+    "dim_paiement": 6,
+    "dim_produit": 6842,
+    "dim_temps": 730,
+    "fait_achats": 6964,
+    "fait_decaissements": 502,
+    "fait_encaissements": 10467,
+    "fait_stock_actuel": 6842,
+    "fait_ventes": 25743
+  }
+}

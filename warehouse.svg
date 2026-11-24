@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2230" height="1210" viewBox="0 0 2230 1210">
+<rect width="2230" height="1210" fill="#F3F6F5"/>
+<style>text{font-family:Arial,sans-serif} .col{font-size:16px;fill:#203F4D}</style>
+<text x="30" y="42" font-size="30" fill="#183644" font-weight="bold">HealthRetailers — implemented SQL warehouse</text>
+<text x="30" y="76" font-size="18" fill="#627780">5 dimensions · 5 fact tables · 14 physical foreign keys · metadata export: 2026-11-24</text>
+<path d="M230,291 V440 H1110 V620" stroke="#087F8C" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M230,291 V450 H1990 V620" stroke="#087F8C" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M670,237 V460 H230 V620" stroke="#D59A39" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M670,237 V470 H670 V620" stroke="#D59A39" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1110,237 V480 H670 V620" stroke="#557B99" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1110,237 V490 H1110 V620" stroke="#557B99" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1550,291 V500 H230 V620" stroke="#7B7593" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1550,291 V510 H1550 V620" stroke="#7B7593" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1550,291 V520 H1990 V620" stroke="#7B7593" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1990,345 V530 H230 V620" stroke="#288365" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1990,345 V540 H670 V620" stroke="#288365" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1990,345 V550 H1110 V620" stroke="#288365" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1990,345 V560 H1550 V620" stroke="#288365" stroke-width="2" fill="none" opacity="0.65"/>
+<path d="M1990,345 V570 H1990 V620" stroke="#288365" stroke-width="2" fill="none" opacity="0.65"/>
+<rect x="30" y="100" width="400" height="191" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="30" y="100" width="400" height="42" rx="9" fill="#183644"/>
+<text x="44" y="128" font-size="19" font-weight="bold" fill="white">dim_client</text>
+<text x="44" y="166" class="col">Company_Id : int</text>
+<text x="44" y="193" class="col">Nom : nvarchar(200) ?</text>
+<text x="44" y="220" class="col">TypeClient : nvarchar(30)</text>
+<text x="44" y="247" class="col">EstClientIdentifie : bit</text>
+<text x="44" y="274" class="col">PK Client_SK : int</text>
+<rect x="470" y="100" width="400" height="137" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="470" y="100" width="400" height="42" rx="9" fill="#183644"/>
+<text x="484" y="128" font-size="19" font-weight="bold" fill="white">dim_fournisseur</text>
+<text x="484" y="166" class="col">Fournisseur_Id : int</text>
+<text x="484" y="193" class="col">Nom : nvarchar(200) ?</text>
+<text x="484" y="220" class="col">PK Fournisseur_SK : int</text>
+<rect x="910" y="100" width="400" height="137" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="910" y="100" width="400" height="42" rx="9" fill="#183644"/>
+<text x="924" y="128" font-size="19" font-weight="bold" fill="white">dim_paiement</text>
+<text x="924" y="166" class="col">PaymentMode_Id : int</text>
+<text x="924" y="193" class="col">PaymentModeName : nvarchar(50)</text>
+<text x="924" y="220" class="col">PK Paiement_SK : int</text>
+<rect x="1350" y="100" width="400" height="191" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="1350" y="100" width="400" height="42" rx="9" fill="#183644"/>
+<text x="1364" y="128" font-size="19" font-weight="bold" fill="white">dim_produit</text>
+<text x="1364" y="166" class="col">Product_Id : int</text>
+<text x="1364" y="193" class="col">Libelle : nvarchar(255) ?</text>
+<text x="1364" y="220" class="col">Famille : nvarchar(100)</text>
+<text x="1364" y="247" class="col">Marque : nvarchar(100)</text>
+<text x="1364" y="274" class="col">PK Produit_SK : int</text>
+<rect x="1790" y="100" width="400" height="245" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="1790" y="100" width="400" height="42" rx="9" fill="#183644"/>
+<text x="1804" y="128" font-size="19" font-weight="bold" fill="white">dim_temps</text>
+<text x="1804" y="166" class="col">PK DateKey : int</text>
+<text x="1804" y="193" class="col">Date : date</text>
+<text x="1804" y="220" class="col">Annee : smallint</text>
+<text x="1804" y="247" class="col">Trimestre : tinyint</text>
+<text x="1804" y="274" class="col">Mois : tinyint</text>
+<text x="1804" y="301" class="col">SemaineISO : tinyint</text>
+<text x="1804" y="328" class="col">EstFerie : bit</text>
+<rect x="30" y="620" width="400" height="299" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="30" y="620" width="400" height="42" rx="9" fill="#087F8C"/>
+<text x="44" y="648" font-size="19" font-weight="bold" fill="white">fait_achats</text>
+<text x="44" y="686" class="col">PK Id : bigint</text>
+<text x="44" y="713" class="col">Document_Id : bigint</text>
+<text x="44" y="740" class="col">FK DateKey : int</text>
+<text x="44" y="767" class="col">Product_Id : int</text>
+<text x="44" y="794" class="col">Fournisseur_Id : int</text>
+<text x="44" y="821" class="col">QuantiteAchetee : decimal(18,4)</text>
+<text x="44" y="848" class="col">MontantAchat_HT : decimal(18,4)</text>
+<text x="44" y="875" class="col">FK Produit_SK : int</text>
+<text x="44" y="902" class="col">FK Fournisseur_SK : int</text>
+<rect x="470" y="620" width="400" height="299" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="470" y="620" width="400" height="42" rx="9" fill="#087F8C"/>
+<text x="484" y="648" font-size="19" font-weight="bold" fill="white">fait_decaissements</text>
+<text x="484" y="686" class="col">PK Id : bigint</text>
+<text x="484" y="713" class="col">Payment_Id : bigint</text>
+<text x="484" y="740" class="col">Document_Id : bigint ?</text>
+<text x="484" y="767" class="col">FK DateKey : int</text>
+<text x="484" y="794" class="col">PaymentMode_Id : int</text>
+<text x="484" y="821" class="col">Fournisseur_Id : int</text>
+<text x="484" y="848" class="col">Amount : decimal(18,4)</text>
+<text x="484" y="875" class="col">FK Paiement_SK : int</text>
+<text x="484" y="902" class="col">FK Fournisseur_SK : int</text>
+<rect x="910" y="620" width="400" height="299" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="910" y="620" width="400" height="42" rx="9" fill="#087F8C"/>
+<text x="924" y="648" font-size="19" font-weight="bold" fill="white">fait_encaissements</text>
+<text x="924" y="686" class="col">PK Id : bigint</text>
+<text x="924" y="713" class="col">Payment_Id : bigint</text>
+<text x="924" y="740" class="col">Document_Id : bigint ?</text>
+<text x="924" y="767" class="col">FK DateKey : int</text>
+<text x="924" y="794" class="col">PaymentMode_Id : int</text>
+<text x="924" y="821" class="col">Company_Id : int</text>
+<text x="924" y="848" class="col">Amount : decimal(18,4)</text>
+<text x="924" y="875" class="col">FK Client_SK : int</text>
+<text x="924" y="902" class="col">FK Paiement_SK : int</text>
+<rect x="1350" y="620" width="400" height="218" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="1350" y="620" width="400" height="42" rx="9" fill="#087F8C"/>
+<text x="1364" y="648" font-size="19" font-weight="bold" fill="white">fait_stock_actuel</text>
+<text x="1364" y="686" class="col">Product_Id : int</text>
+<text x="1364" y="713" class="col">FK DateKey : int ?</text>
+<text x="1364" y="740" class="col">QuantiteActuelle : decimal(18,4)</text>
+<text x="1364" y="767" class="col">QuantiteAlerte : decimal(18,4) ?</text>
+<text x="1364" y="794" class="col">EstSousSeuil : bit ?</text>
+<text x="1364" y="821" class="col">PK Produit_SK : int</text>
+<rect x="1790" y="620" width="400" height="353" rx="9" fill="white" stroke="#DBE6E3"/>
+<rect x="1790" y="620" width="400" height="42" rx="9" fill="#087F8C"/>
+<text x="1804" y="648" font-size="19" font-weight="bold" fill="white">fait_ventes</text>
+<text x="1804" y="686" class="col">PK Id : bigint</text>
+<text x="1804" y="713" class="col">Document_Id : bigint</text>
+<text x="1804" y="740" class="col">FK DateKey : int</text>
+<text x="1804" y="767" class="col">Product_Id : int</text>
+<text x="1804" y="794" class="col">Company_Id : int</text>
+<text x="1804" y="821" class="col">QuantiteVendue : decimal(18,4)</text>
+<text x="1804" y="848" class="col">Remise_HT : decimal(18,4)</text>
+<text x="1804" y="875" class="col">CA_HT : decimal(18,4)</text>
+<text x="1804" y="902" class="col">Cout_HT : decimal(18,4) ?</text>
+<text x="1804" y="929" class="col">FK Produit_SK : int</text>
+<text x="1804" y="956" class="col">FK Client_SK : int</text>
+<text x="30" y="1172" font-size="18" fill="#627780">? = nullable. Stock DateKey is physically present but unknown; Power BI omits that active relationship (13 relationships).</text>
+</svg>

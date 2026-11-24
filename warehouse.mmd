@@ -1,0 +1,102 @@
+erDiagram
+    dim_client {
+        int Company_Id
+        nvarchar Nom
+        nvarchar TypeClient
+        bit EstClientIdentifie
+        int Client_SK PK
+    }
+    dim_fournisseur {
+        int Fournisseur_Id
+        nvarchar Nom
+        int Fournisseur_SK PK
+    }
+    dim_paiement {
+        int PaymentMode_Id
+        nvarchar PaymentModeName
+        int Paiement_SK PK
+    }
+    dim_produit {
+        int Product_Id
+        nvarchar Libelle
+        nvarchar Famille
+        nvarchar Marque
+        int Produit_SK PK
+    }
+    dim_temps {
+        int DateKey PK
+        date Date
+        smallint Annee
+        tinyint Trimestre
+        tinyint Mois
+        tinyint SemaineISO
+        bit EstFerie
+    }
+    fait_achats {
+        bigint Id PK
+        bigint Document_Id
+        int DateKey FK
+        int Product_Id
+        int Fournisseur_Id
+        decimal QuantiteAchetee
+        decimal MontantAchat_HT
+        int Produit_SK FK
+        int Fournisseur_SK FK
+    }
+    fait_decaissements {
+        bigint Id PK
+        bigint Payment_Id
+        bigint Document_Id
+        int DateKey FK
+        int PaymentMode_Id
+        int Fournisseur_Id
+        decimal Amount
+        int Paiement_SK FK
+        int Fournisseur_SK FK
+    }
+    fait_encaissements {
+        bigint Id PK
+        bigint Payment_Id
+        bigint Document_Id
+        int DateKey FK
+        int PaymentMode_Id
+        int Company_Id
+        decimal Amount
+        int Client_SK FK
+        int Paiement_SK FK
+    }
+    fait_stock_actuel {
+        int Product_Id
+        int DateKey FK
+        decimal QuantiteActuelle
+        decimal QuantiteAlerte
+        bit EstSousSeuil
+        int Produit_SK PK,FK
+    }
+    fait_ventes {
+        bigint Id PK
+        bigint Document_Id
+        int DateKey FK
+        int Product_Id
+        int Company_Id
+        decimal QuantiteVendue
+        decimal Remise_HT
+        decimal CA_HT
+        decimal Cout_HT
+        int Produit_SK FK
+        int Client_SK FK
+    }
+    dim_client ||--o{ fait_encaissements : Client_SK
+    dim_client ||--o{ fait_ventes : Client_SK
+    dim_fournisseur ||--o{ fait_achats : Fournisseur_SK
+    dim_fournisseur ||--o{ fait_decaissements : Fournisseur_SK
+    dim_paiement ||--o{ fait_decaissements : Paiement_SK
+    dim_paiement ||--o{ fait_encaissements : Paiement_SK
+    dim_produit ||--o{ fait_achats : Produit_SK
+    dim_produit ||--o| fait_stock_actuel : Produit_SK
+    dim_produit ||--o{ fait_ventes : Produit_SK
+    dim_temps ||--o{ fait_achats : DateKey
+    dim_temps ||--o{ fait_decaissements : DateKey
+    dim_temps ||--o{ fait_encaissements : DateKey
+    dim_temps o|--o{ fait_stock_actuel : DateKey
+    dim_temps ||--o{ fait_ventes : DateKey
