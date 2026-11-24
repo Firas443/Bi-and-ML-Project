@@ -1,0 +1,15 @@
+feature,selected,reason_if_dropped
+recency_days,True,
+n_documents,True,
+revenue_ht,True,
+avg_basket_ht,True,
+tenure_days,True,
+purchases_per_month,True,
+active_months,False,|r| = 0.93 with n_documents
+n_products,True,
+n_lines,False,|r| = 0.98 with n_products
+quantity,False,|r| = 0.88 with n_products
+discount_rate_pct,True,
+margin_rate_pct,True,
+is_laboratory,True,
+type_unknown,True,

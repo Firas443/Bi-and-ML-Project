@@ -1,0 +1,8 @@
+﻿Id;FullName;UserName;Password;PasswordSalt;Tresorerie
+1;Administrateur;admin;;;"{""defaultCaisseId"":""5f5022c6-5883-45d4-bc76-d2b158f859ad""}"
+2;Système;_!_!_!_system_!_!_!_;;;
+3;Marie;Marie;;;"{""defaultBankAccountId"":""41e8adb8-c852-40de-9f3f-2f731487b435"",""defaultCaisseId"":""5e63f93b-bbb5-4ba3-9f96-9b29d29854d7""}"
+4;Hugo;Hugo;;;"{""defaultBankAccountId"":""dede29c6-7d96-40fc-8721-26b0d2a3a218"",""defaultCaisseId"":""43fd7699-df3d-4c90-beda-dd26e8e821e3""}"
+5;Celine;Celine;;;"{""defaultBankAccountId"":""c3800085-785e-4756-8d3a-6f35d74ca26b"",""defaultCaisseId"":""47b99b68-b1ad-4671-8b9b-fea29ec68403""}"
+6;melanie;melanie;;;"{""defaultBankAccountId"":""239b395c-ecdd-4cdb-80d0-1af0b9263e2d"",""defaultCaisseId"":""bd92d636-f45d-471d-87ff-4852a2880606""}"
+7;kady;kady;;;"{""defaultCaisseId"":""86219038-b0d4-4b27-8e46-8bb24c9a4d09""}"

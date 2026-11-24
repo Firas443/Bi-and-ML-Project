@@ -1,0 +1,4 @@
+model,MAE,RMSE
+baseline: same as this week,45.73,94.07
+ridge: internal + calendar,61.71,98.98
+ridge: + weather PCA + epidemics,63.58,101.03

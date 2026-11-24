@@ -1,0 +1,12 @@
+column,dtype,missing_count,missing_%,unique_values
+Id,string,0,0.0,49609
+DocumentId,string,0,0.0,12582
+MovementDate,string,0,0.0,14219
+Quantity,string,0,0.0,131
+CurrentBalance,string,0,0.0,270
+Description,string,0,0.0,13259
+ProductStock_Id,string,0,0.0,6842
+User_Id,string,0,0.0,6
+Extra,string,0,0.0,12305
+ProductStockLocation_Id,string,49609,100.0,0
+CurrentLocationBalance,string,49609,100.0,0

@@ -1,0 +1,6 @@
+file,rows,columns,exact_duplicates,empty_columns
+CaisseOperations.csv,9707,12,0,2
+TresoreriePayments.csv,10280,11,0,2
+PaymentsList.csv,10280,10,0,0
+DomainEvents.csv,21743,8,0,0
+users_csv.csv,7,4,0,0

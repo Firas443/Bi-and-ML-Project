@@ -1,0 +1,8 @@
+{
+  "credential_columns_blanked": [
+    "users_csv.csv:Password",
+    "users_csv.csv:PasswordSalt"
+  ],
+  "nonempty_cells_removed": 14,
+  "local_originals_unchanged": true
+}

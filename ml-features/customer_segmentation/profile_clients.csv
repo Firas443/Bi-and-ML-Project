@@ -1,0 +1,12 @@
+column,dtype,missing_count,missing_%,unique_values
+Code,string,0,0.0,93
+Nom,string,0,0.0,93
+Adresse,string,0,0.0,91
+Code postal,string,0,0.0,55
+Ville,string,0,0.0,5
+Pays,string,0,0.0,1
+E-Mail,string,0,0.0,93
+Site Web,string,92,98.92,1
+Solde,string,0,0.0,64
+Solde initial,string,0,0.0,1
+Registre de commerce,string,93,100.0,0

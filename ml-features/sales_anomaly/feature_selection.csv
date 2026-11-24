@@ -1,0 +1,25 @@
+feature,role,selected,reason_if_dropped
+discount_pct,numeric,True,
+unit_price_ht,numeric,True,
+quantity,numeric,True,
+line_total_ht,numeric,False,redundant with quantity × price × discount
+margin_gap_pct,numeric,True,
+price_gap_vs_product_pct,numeric,True,
+qty_z_vs_product,numeric,True,
+lines_in_document,numeric,True,
+seller_past_avg_discount,numeric,True,
+hour,numeric,True,
+weekday,numeric,True,
+is_saturday,numeric,True,
+channel,categorical,True,
+seller,categorical,True,
+family,categorical,True,
+Id,audit_only,False,traceability / validation only
+Document_Id,audit_only,False,traceability / validation only
+product_id,audit_only,False,traceability / validation only
+DocumentDate,audit_only,False,traceability / validation only
+CreatedDate,audit_only,False,traceability / validation only
+cost_source,audit_only,False,traceability / validation only
+rule_discount_over_50,audit_only,False,traceability / validation only
+rule_below_cost,audit_only,False,traceability / validation only
+rule_atypical_qty,audit_only,False,traceability / validation only

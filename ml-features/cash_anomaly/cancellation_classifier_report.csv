@@ -1,0 +1,6 @@
+metric,value
+holdout cancellations,9.0
+base rate (random ranking PR-AUC),0.0046
+model PR-AUC (average precision),0.0073
+precision when reviewing top 18,0.0
+recall when reviewing top 18,0.0

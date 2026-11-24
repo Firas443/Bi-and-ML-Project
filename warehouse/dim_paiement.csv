@@ -1,0 +1,7 @@
+PaymentMode_Id,PaymentModeName,Paiement_SK
+-1,Non renseigné,1
+1,Chèque,2
+5,Carte bancaire,3
+7,Crédit (paiement différé),4
+11,Espèces,5
+21,Jetons,6

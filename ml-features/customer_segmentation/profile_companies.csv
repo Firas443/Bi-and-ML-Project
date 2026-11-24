@@ -1,0 +1,19 @@
+column,dtype,missing_count,missing_%,unique_values
+Id,string,0,0.0,156
+IsRemoved,string,0,0.0,1
+CompanyType_Id,string,0,0.0,2
+| Name                                      |,string,0,0.0,149
+IsGuest,string,0,0.0,2
+Code,string,0,0.0,156
+Id3,string,156,100.0,0
+Id4,string,156,100.0,0
+Id5,string,156,100.0,0
+Id6,string,156,100.0,0
+Id7,string,156,100.0,0
+telephone,string,0,0.0,156
+email,string,0,0.0,156
+Unnamed: 13,string,156,100.0,0
+Unnamed: 14,string,156,100.0,0
+Unnamed: 15,string,156,100.0,0
+Unnamed: 16,string,156,100.0,0
+Unnamed: 17,string,156,100.0,0

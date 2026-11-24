@@ -1,0 +1,1 @@
+Id,CaisseId,TransactionId,AddedAtUtc,CancelledAtUtc,AddedByUserId,CancelledByUserId,Amount,Status,DepositId,WithdrawalId,PaymentId,flag_missing_key,flag_missing_timestamp,flag_zero_amount,flag_negative_amount,flag_duplicate_operation_id,flag_cancel_before_create,is_cancelled

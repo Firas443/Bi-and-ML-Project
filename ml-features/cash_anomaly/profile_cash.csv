@@ -1,0 +1,13 @@
+column,dtype,missing_count,missing_%,unique_values
+Id,string,0,0.0,9707
+CaisseId,string,0,0.0,6
+TransactionId,string,0,0.0,9707
+AddedAtUtc,string,0,0.0,9347
+CancelledAtUtc,string,9605,98.95,93
+AddedByUserId,string,0,0.0,6
+CancelledByUserId,string,9605,98.95,4
+Amount,string,0,0.0,6811
+Status,string,0,0.0,3
+DepositId,string,9707,100.0,0
+WithdrawalId,string,9707,100.0,0
+PaymentId,string,0,0.0,9707

@@ -1,0 +1,10 @@
+file,origin,rows,columns,exact_duplicates,empty_columns
+Documents.csv,real,12542,35,0,2
+documentItemm.csv,real,38705,34,0,10
+DocumentTypes.csv,real,15,16,0,0
+RelatedDocuments.csv,real,864,4,0,0
+ProductStocks.csv,real,6842,5,0,0
+Documents.csv,synthetic,32874,35,0,4
+documentItemm.csv,synthetic,82665,34,0,10
+ProductStocks.csv,synthetic,6842,5,0,0
+cleaned/products.csv,reference,7792,20,0,0

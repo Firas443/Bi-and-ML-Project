@@ -1,0 +1,12 @@
+dataset,column,conversion,unparseable_non_null
+documents,TotalHt,amount,0
+documents,TotalNetHt,amount,0
+documents,DocumentDate,date %m/%d/%Y %H:%M,0
+documents,CreatedDate,date %m/%d/%Y %H:%M,0
+items,Quantity,amount,0
+items,PrixHt,amount,0
+items,PrixTotalHt,amount,0
+items,DiscountPourcentage,amount,0
+items,SumDiscountTotal,amount,0
+doc_types,StockFactor,amount,0
+doc_types,IsSellType,boolean,0

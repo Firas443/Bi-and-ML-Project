@@ -1,0 +1,27 @@
+feature,selected,reason_if_dropped
+amount,False,redundant (log amount / cashier)
+amount_log_signed,True,
+gap_vs_register_median,True,
+amount_z_vs_user,True,
+hour,True,
+weekday,True,
+month,True,
+is_saturday,True,
+minutes_since_previous_on_register,True,
+ops_last_60min_register,True,
+user_ops_today_before,True,
+user_past_cancel_rate,True,
+is_supplier_payment,False,near-constant (> 99 % one value)
+is_walk_in_customer,True,
+register,False,redundant (log amount / cashier)
+cashier,True,
+payment_mode,False,near-constant (> 99 % one value)
+Id,False,traceability only
+CaisseId,False,traceability only
+PaymentId,False,traceability only
+TransactionId,False,traceability only
+AddedAtUtc,False,traceability only
+Status,False,LEAKAGE: known only after the operation
+CancelledAtUtc,False,LEAKAGE: known only after the operation
+CancelledByUserId,False,LEAKAGE: known only after the operation
+is_cancelled,False,LEAKAGE: known only after the operation

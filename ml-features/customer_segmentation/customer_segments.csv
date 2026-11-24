@@ -1,0 +1,61 @@
+company_id,code,name,customer_type,segment
+10,CL0003,Claire Martin,INDIVIDUAL,0
+104,CL0034,Benjamin Leroy,INDIVIDUAL,2
+108,CL0035,Céline Morel,INDIVIDUAL,1
+113,CL0036,Laboratoires Valesca,UNKNOWN,4
+114,CL0037,Laboratoire NovaLab France,LABORATORY,3
+116,CL0038,Laboratoire NexaLab France,LABORATORY,3
+117,CL0039,Laboratoires Évolia,UNKNOWN,4
+12,CL0004,Thomas Bernard,INDIVIDUAL,0
+122,CL0041,Laboratoire BioNova Paris,LABORATORY,3
+129,CL0043,Laboratoire PharmaLab Paris,LABORATORY,3
+133,CL0046,Laboratoire NexaMed Paris,LABORATORY,3
+135,CL0047,Santévia France,UNKNOWN,4
+139,CL0049,Laboratoires Calypsa France,UNKNOWN,1
+14,CL0005,Sophie Dubois,INDIVIDUAL,1
+140,CL0050,Médoria Distribution,UNKNOWN,4
+144,CL0051,Médinova Distribution,UNKNOWN,4
+145,CL0052,Santéora France,UNKNOWN,4
+15,CL0006,Nicolas Petit,INDIVIDUAL,0
+150,CL0055,Laboratoire MediLab Paris,LABORATORY,3
+155,CL0058,Laboratoire NovaBio Lyon,LABORATORY,5
+157,CL0060,Santéa Pharma France,UNKNOWN,4
+162,CL0062,Médicentra Pharma,UNKNOWN,4
+163,CL0063,Pharmanova Distribution France,UNKNOWN,4
+164,CL0064,Laboratoires Aurélis Pharma,UNKNOWN,4
+165,CL0065,Laboratoire MediRhône,LABORATORY,3
+166,CL0066,Medivance Distribution,UNKNOWN,1
+169,CL0068,Laboratoire NovaPharm Lyon,LABORATORY,3
+170,CL0069,Laboratoire NexaPharm Lyon,LABORATORY,3
+171,CL0070,Laboratoire PharmaLys Lyon,LABORATORY,3
+172,CL0071,Laboratoire MediLys Lyon,LABORATORY,3
+173,CL0072,Laboratoire NovaLab Marseille,LABORATORY,3
+174,CL0073,Laboratoire NexaLab Marseille,LABORATORY,5
+181,CL0077,Laboratoire PharmaLab Marseille,LABORATORY,3
+184,CL0079,Laboratoire NovaMed Marseille,LABORATORY,5
+19,CL0007,Camille Robert,INDIVIDUAL,2
+190,CL0081,Laboratoire NexaMed Marseille,LABORATORY,3
+196,CL0084,Laboratoire MediAzur,LABORATORY,3
+199,CL0085,Médinex Distribution,UNKNOWN,4
+201,CL0087,Laboratoires Séréna Pharma,UNKNOWN,4
+205,CL0089,Mathieu Robin,INDIVIDUAL,5
+207,CL0090,Amélie Masson,INDIVIDUAL,3
+208,CL0091,Guillaume Henry,INDIVIDUAL,5
+219,CL0098,Vincent Lefort,INDIVIDUAL,5
+40,CL0011,Laura Morel,INDIVIDUAL,2
+42,CL0013,Julie Laurent,INDIVIDUAL,2
+52,CL0016,Manon Michel,INDIVIDUAL,2
+58,CL0019,Lucas Garcia,INDIVIDUAL,2
+62,CL0020,Chloé David,INDIVIDUAL,2
+63,CL0021,Alexandre Bertrand,INDIVIDUAL,2
+66,CL0022,Emma Roux,INDIVIDUAL,2
+67,CL0023,Maxime Vincent,INDIVIDUAL,2
+7,CL0001,Julien Moreau,INDIVIDUAL,0
+72,CL0024,Sarah Fournier,INDIVIDUAL,2
+73,CL0025,Pierre Moreau,INDIVIDUAL,2
+75,CL0026,Anaïs Martin,INDIVIDUAL,2
+87,CL0027,Romain Bernard,INDIVIDUAL,2
+90,CL0028,Marion Dubois,INDIVIDUAL,2
+94,CL0030,Pauline Robert,INDIVIDUAL,2
+95,CL0031,Jérôme Richard,INDIVIDUAL,2
+97,CL0032,Alice Durand,INDIVIDUAL,1

@@ -1,0 +1,83 @@
+Company_Id,Nom,TypeClient,EstClientIdentifie,Client_SK
+-1,NON RENSEIGNE,NON RENSEIGNE,False,1
+2,Client comptoir (anonyme),COMPTOIR_ANONYME,False,2
+7,Julien Moreau,PARTICULIER,True,3
+10,Claire Martin,PARTICULIER,True,4
+12,Thomas Bernard,PARTICULIER,True,5
+14,Sophie Dubois,PARTICULIER,True,6
+15,Nicolas Petit,PARTICULIER,True,7
+19,Camille Robert,PARTICULIER,True,8
+23,NON RENSEIGNE,NON RENSEIGNE,True,9
+33,NON RENSEIGNE,NON RENSEIGNE,True,10
+35,Marc Leroy,PARTICULIER,True,11
+40,Laura Morel,PARTICULIER,True,12
+41,NON RENSEIGNE,NON RENSEIGNE,True,13
+42,Julie Laurent,PARTICULIER,True,14
+44,NON RENSEIGNE,NON RENSEIGNE,True,15
+47,NON RENSEIGNE,NON RENSEIGNE,True,16
+52,Manon Michel,PARTICULIER,True,17
+56,NON RENSEIGNE,NON RENSEIGNE,True,18
+57,NON RENSEIGNE,NON RENSEIGNE,True,19
+58,Lucas Garcia,PARTICULIER,True,20
+62,Chloé David,PARTICULIER,True,21
+63,Alexandre Bertrand,PARTICULIER,True,22
+66,Emma Roux,PARTICULIER,True,23
+67,Maxime Vincent,PARTICULIER,True,24
+72,Sarah Fournier,PARTICULIER,True,25
+73,Pierre Moreau,PARTICULIER,True,26
+75,Anaïs Martin,PARTICULIER,True,27
+87,Romain Bernard,PARTICULIER,True,28
+90,Marion Dubois,PARTICULIER,True,29
+91,NON RENSEIGNE,NON RENSEIGNE,True,30
+94,Pauline Robert,PARTICULIER,True,31
+95,Jérôme Richard,PARTICULIER,True,32
+97,Alice Durand,PARTICULIER,True,33
+104,Benjamin Leroy,PARTICULIER,True,34
+108,Céline Morel,PARTICULIER,True,35
+113,Laboratoires Valesca,NON RENSEIGNE,True,36
+114,Laboratoire NovaLab France,B2B - LABORATOIRE,True,37
+116,Laboratoire NexaLab France,B2B - LABORATOIRE,True,38
+117,Laboratoires Évolia,NON RENSEIGNE,True,39
+119,NON RENSEIGNE,NON RENSEIGNE,True,40
+122,Laboratoire BioNova Paris,B2B - LABORATOIRE,True,41
+129,Laboratoire PharmaLab Paris,B2B - LABORATOIRE,True,42
+133,Laboratoire NexaMed Paris,B2B - LABORATOIRE,True,43
+135,Santévia France,NON RENSEIGNE,True,44
+139,Laboratoires Calypsa France,NON RENSEIGNE,True,45
+140,Médoria Distribution,NON RENSEIGNE,True,46
+144,Médinova Distribution,NON RENSEIGNE,True,47
+145,Santéora France,NON RENSEIGNE,True,48
+150,Laboratoire MediLab Paris,B2B - LABORATOIRE,True,49
+155,Laboratoire NovaBio Lyon,B2B - LABORATOIRE,True,50
+156,NON RENSEIGNE,NON RENSEIGNE,True,51
+157,Santéa Pharma France,NON RENSEIGNE,True,52
+162,Médicentra Pharma,NON RENSEIGNE,True,53
+163,Pharmanova Distribution France,NON RENSEIGNE,True,54
+164,Laboratoires Aurélis Pharma,NON RENSEIGNE,True,55
+165,Laboratoire MediRhône,B2B - LABORATOIRE,True,56
+166,Medivance Distribution,NON RENSEIGNE,True,57
+167,NON RENSEIGNE,NON RENSEIGNE,True,58
+169,Laboratoire NovaPharm Lyon,B2B - LABORATOIRE,True,59
+170,Laboratoire NexaPharm Lyon,B2B - LABORATOIRE,True,60
+171,Laboratoire PharmaLys Lyon,B2B - LABORATOIRE,True,61
+172,Laboratoire MediLys Lyon,B2B - LABORATOIRE,True,62
+173,Laboratoire NovaLab Marseille,B2B - LABORATOIRE,True,63
+174,Laboratoire NexaLab Marseille,B2B - LABORATOIRE,True,64
+175,NON RENSEIGNE,NON RENSEIGNE,True,65
+181,Laboratoire PharmaLab Marseille,B2B - LABORATOIRE,True,66
+182,NON RENSEIGNE,NON RENSEIGNE,True,67
+184,Laboratoire NovaMed Marseille,B2B - LABORATOIRE,True,68
+190,Laboratoire NexaMed Marseille,B2B - LABORATOIRE,True,69
+196,Laboratoire MediAzur,B2B - LABORATOIRE,True,70
+199,Médinex Distribution,NON RENSEIGNE,True,71
+200,NON RENSEIGNE,NON RENSEIGNE,True,72
+201,Laboratoires Séréna Pharma,NON RENSEIGNE,True,73
+204,NON RENSEIGNE,NON RENSEIGNE,True,74
+205,Mathieu Robin,PARTICULIER,True,75
+207,Amélie Masson,PARTICULIER,True,76
+208,Guillaume Henry,PARTICULIER,True,77
+211,NON RENSEIGNE,NON RENSEIGNE,True,78
+217,NON RENSEIGNE,NON RENSEIGNE,True,79
+218,NON RENSEIGNE,NON RENSEIGNE,True,80
+219,Vincent Lefort,PARTICULIER,True,81
+220,NON RENSEIGNE,NON RENSEIGNE,True,82

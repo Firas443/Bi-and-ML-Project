@@ -1,0 +1,9 @@
+file,rows,columns,exact_duplicates,empty_columns
+Documents.csv,12542,35,0,2
+documentItemm.csv,38705,34,0,10
+RelatedDocuments.csv,864,4,0,0
+Transactions.csv,12523,12,0,2
+CompaniesList.csv,156,18,0,10
+Clients - 24112025081756 (3).csv,93,11,0,1
+ProductStocks.csv,6842,5,0,0
+StockMovements.csv,49609,11,0,2

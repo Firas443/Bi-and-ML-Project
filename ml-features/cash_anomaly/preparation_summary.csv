@@ -1,0 +1,10 @@
+metric,value
+raw_cash_rows,9707
+retained_operations,9707
+quarantined_operations,0
+cancelled_operations,102
+treasury_match_%,100.0
+discrepancies,437
+overnight_removals,190
+encoded_feature_count,18
+pca_component_count,9

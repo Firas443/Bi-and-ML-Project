@@ -1,0 +1,9 @@
+metric,value
+customer_lines_kept,91057
+quarantined_lines,1381
+groups,7
+weeks,105
+real_weeks,30
+model_rows,707
+prepared_features,28
+weather_components,3

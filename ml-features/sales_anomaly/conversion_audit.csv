@@ -1,0 +1,9 @@
+dataset,column,conversion,unparseable_non_null
+documents,DocumentDate,date %m/%d/%Y %H:%M,0
+documents,CreatedDate,date %m/%d/%Y %H:%M,0
+items,Quantity,amount,0
+items,PrixHt,amount,0
+items,PrixTotalHt,amount,0
+items,DiscountPourcentage,amount,0
+movements,Quantity,amount,0
+movements,MovementDate,date %d/%m/%Y %H:%M,0

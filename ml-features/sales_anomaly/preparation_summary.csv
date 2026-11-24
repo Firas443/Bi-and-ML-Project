@@ -1,0 +1,8 @@
+metric,value
+raw_lines,38705
+sales_lines_retained,25700
+quarantined_lines,1038
+lines_with_cost_%,99.99
+encoded_feature_count,27
+pca_component_count,10
+pca_explained_variance,0.9141

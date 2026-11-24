@@ -1,0 +1,13 @@
+column,dtype,missing_count,missing_%,unique_values
+Id,string,0,0.0,12523
+IsPayed,string,0,0.0,2
+PayedAmount,string,0,0.0,7858
+IsDestocked,string,0,0.0,2
+IsRestocked,string,0,0.0,2
+Company_Id,string,30,0.24,196
+PaymentDocument_Id,string,1077,8.6,11446
+RefundDocument_Id,string,12494,99.77,29
+DestockDocument_Id,string,87,0.69,12436
+RestockDocument_Id,string,12487,99.71,36
+BillingAddressId,string,12523,100.0,0
+ShippingAddressId,string,12523,100.0,0

@@ -1,0 +1,12 @@
+dataset,column,conversion,unparseable_non_null
+cash,Amount,amount,0
+cash,AddedAtUtc,date %m/%d/%Y %H:%M,0
+cash,CancelledAtUtc,date %m/%d/%Y %H:%M,0
+treasury,Amount,amount,0
+treasury,IsPurchase,boolean,0
+treasury,Removed,boolean,0
+treasury,CreatedAtUtc,date %m/%d/%Y %H:%M,0
+payments,Amount,amount,0
+payments,IsRemoved,boolean,0
+payments,PaymentDate,date %d/%m/%Y %H:%M,0
+events,UtcTimestamp,date %m/%d/%Y %H:%M,0
