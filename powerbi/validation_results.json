@@ -1,0 +1,532 @@
+{
+  "comparisons": 75,
+  "passed": 75,
+  "failed": 0,
+  "results": [
+    {
+      "name": "CA HT",
+      "sql": "1021266.2950",
+      "dax": 1021266.295,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Quantite vendue",
+      "sql": "39525.0000",
+      "dax": 39525.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Nombre de ventes",
+      "sql": "11571",
+      "dax": 11571,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Panier moyen",
+      "sql": "88.260849",
+      "dax": 88.2608,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Cout HT connu",
+      "sql": "854024.2010",
+      "dax": 854024.201,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA avec cout connu",
+      "sql": "1018212.3780",
+      "dax": 1018212.378,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Marge HT",
+      "sql": "164188.1770",
+      "dax": 164188.177,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Lignes sans cout",
+      "sql": "60",
+      "dax": 60,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Couverture cout",
+      "sql": "0.997669269315",
+      "dax": 0.9976692693159306,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Clients actifs",
+      "sql": "79",
+      "dax": 79,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA clients identifies",
+      "sql": "500688.4620",
+      "dax": 500688.462,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Ventes clients identifies",
+      "sql": "2696",
+      "dax": 2696,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Panier clients identifies",
+      "sql": "185.715304",
+      "dax": 185.7153,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Frequence achat client",
+      "sql": "34.126582278481",
+      "dax": 34.12658227848101,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Stock disponible",
+      "sql": "18800.0000",
+      "dax": 18800.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Produits en rupture",
+      "sql": "2899",
+      "dax": 2899,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Produits en stock faible",
+      "sql": "1283",
+      "dax": 1283,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Produits sans seuil",
+      "sql": "2393",
+      "dax": 2393,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant encaisse",
+      "sql": "941536.5800",
+      "dax": 941536.58,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant paye aux fournisseurs",
+      "sql": "685658.6610",
+      "dax": 685658.661,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Tresorerie nette",
+      "sql": "255877.9190",
+      "dax": 255877.919,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Nombre encaissements",
+      "sql": "10398",
+      "dax": 10398,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Nombre decaissements",
+      "sql": "501",
+      "dax": 501,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Nombre de paiements",
+      "sql": "10899",
+      "dax": 10899,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle vente",
+      "sql": "735583.8420",
+      "dax": 735583.842,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle facture fournisseur",
+      "sql": "681873.4610",
+      "dax": 681873.461,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Encaissements non affectes",
+      "sql": "4062.6080",
+      "dax": 4062.608,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Decaissements non affectes",
+      "sql": "3785.2000",
+      "dax": 3785.2,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Achats HT",
+      "sql": "958947.7230",
+      "dax": 958947.723,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Quantite achetee",
+      "sql": "43929.0000",
+      "dax": 43929.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Nombre factures fournisseurs",
+      "sql": "880",
+      "dax": 880,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA HT / dim_produit 3941",
+      "sql": "5073.0320",
+      "dax": 5073.032,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA HT / dim_produit 5253",
+      "sql": "3558.5790",
+      "dax": 3558.579,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA HT / dim_produit 93",
+      "sql": "9320.5020",
+      "dax": 9320.502,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA HT / dim_client 2",
+      "sql": "520444.2200",
+      "dax": 520444.22,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA HT / dim_client 7",
+      "sql": "362407.6490",
+      "dax": 362407.649,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA HT / dim_client 15",
+      "sql": "86025.1060",
+      "dax": 86025.106,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Achats HT / dim_fournisseur 30",
+      "sql": "89406.4720",
+      "dax": 89406.472,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Achats HT / dim_fournisseur 4",
+      "sql": "67471.8290",
+      "dax": 67471.829,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Achats HT / dim_fournisseur 13",
+      "sql": "33824.3400",
+      "dax": 33824.34,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant encaisse / dim_paiement -1",
+      "sql": "752133.7600",
+      "dax": 752133.76,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant encaisse / dim_paiement 11",
+      "sql": "28039.2880",
+      "dax": 28039.288,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant encaisse / dim_paiement 5",
+      "sql": "25250.4760",
+      "dax": 25250.476,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant paye aux fournisseurs / dim_fournisseur 30",
+      "sql": "59310.5870",
+      "dax": 59310.587,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant paye aux fournisseurs / dim_fournisseur 36",
+      "sql": "26175.3700",
+      "dax": 26175.37,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant paye aux fournisseurs / dim_fournisseur 24",
+      "sql": "58309.7030",
+      "dax": 58309.703,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Stock disponible / dim_produit 1",
+      "sql": "1.0000",
+      "dax": 1.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Stock disponible / dim_produit 2",
+      "sql": "0.0000",
+      "dax": 0.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Stock disponible / dim_produit 3",
+      "sql": "0.0000",
+      "dax": 0.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202409",
+      "sql": "7057.3580",
+      "dax": 7057.358,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202409",
+      "sql": null,
+      "dax": null,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202410",
+      "sql": "150417.0500",
+      "dax": 150417.05,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202410",
+      "sql": "20.313507",
+      "dax": 20.313507122637112,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202411",
+      "sql": "164993.1050",
+      "dax": 164993.105,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202411",
+      "sql": "0.096904",
+      "dax": 0.09690427381736312,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202412",
+      "sql": "129409.5170",
+      "dax": 129409.517,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202412",
+      "sql": "-0.215667",
+      "dax": -0.21566712136243513,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202501",
+      "sql": "154497.8760",
+      "dax": 154497.876,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202501",
+      "sql": "0.193867",
+      "dax": 0.1938679594948183,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202502",
+      "sql": "139119.4220",
+      "dax": 139119.422,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202502",
+      "sql": "-0.099538",
+      "dax": -0.09953828750370652,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202503",
+      "sql": "112019.9270",
+      "dax": 112019.927,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202503",
+      "sql": "-0.194793",
+      "dax": -0.19479303903375908,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "CA month 202504",
+      "sql": "163752.0400",
+      "dax": 163752.04,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Growth MoM 202504",
+      "sql": "0.461811",
+      "dax": 0.461811700698573,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "YoY missing history",
+      "sql": null,
+      "dax": null,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Snapshot ignores date slicer",
+      "sql": "18800.0000",
+      "dax": 18800.0,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle vente doc 12001",
+      "sql": "2737.4240",
+      "dax": 2737.424,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle vente doc 6917",
+      "sql": "1392.1050",
+      "dax": 1392.105,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle vente doc 9501",
+      "sql": "708.1760",
+      "dax": 708.176,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle facture fournisseur doc 8035",
+      "sql": "6984.9690",
+      "dax": 6984.969,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle facture fournisseur doc 7845",
+      "sql": "8622.3340",
+      "dax": 8622.334,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Montant regle facture fournisseur doc 7707",
+      "sql": "11990.1400",
+      "dax": 11990.14,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Atelier1_Ventes_Demo",
+      "sql": "2",
+      "dax": 2,
+      "passed": true,
+      "error": null
+    },
+    {
+      "name": "Atelier1_Pays_Demo",
+      "sql": "4",
+      "dax": 4,
+      "passed": true,
+      "error": null
+    }
+  ]
+}

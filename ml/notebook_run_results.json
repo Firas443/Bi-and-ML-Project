@@ -1,0 +1,22 @@
+[
+  {
+    "notebook": "health_retailers_cash_anomaly_v2_executed.ipynb",
+    "passed": true,
+    "executed_cells": 12
+  },
+  {
+    "notebook": "health_retailers_customer_segmentation_complete_commented.ipynb",
+    "passed": true,
+    "executed_cells": 11
+  },
+  {
+    "notebook": "health_retailers_demand_forecast_complete_commented.ipynb",
+    "passed": true,
+    "executed_cells": 14
+  },
+  {
+    "notebook": "health_retailers_sales_anomaly_complete_commented.ipynb",
+    "passed": true,
+    "executed_cells": 12
+  }
+]

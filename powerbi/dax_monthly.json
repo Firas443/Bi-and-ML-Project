@@ -1,0 +1,74 @@
+[
+  {
+    "dim_temps[AnneeMois]": "2024-09",
+    "[CA HT]": 7057.358,
+    "[Marge HT]": 1047.434,
+    "[Croissance CA MoM]": null,
+    "[Encaisse]": 7226.31,
+    "[Decaisse]": null,
+    "[Achats]": 3963.658
+  },
+  {
+    "dim_temps[AnneeMois]": "2024-10",
+    "[CA HT]": 150417.05,
+    "[Marge HT]": 26299.296,
+    "[Croissance CA MoM]": 20.313507122637112,
+    "[Encaisse]": 111633.917,
+    "[Decaisse]": 67060.346,
+    "[Achats]": 143007.14
+  },
+  {
+    "dim_temps[AnneeMois]": "2024-11",
+    "[CA HT]": 164993.105,
+    "[Marge HT]": 25047.386,
+    "[Croissance CA MoM]": 0.09690427381736312,
+    "[Encaisse]": 181929.385,
+    "[Decaisse]": 64301.205,
+    "[Achats]": 136703.068
+  },
+  {
+    "dim_temps[AnneeMois]": "2024-12",
+    "[CA HT]": 129409.517,
+    "[Marge HT]": 21178.746,
+    "[Croissance CA MoM]": -0.21566712136243513,
+    "[Encaisse]": 158055.735,
+    "[Decaisse]": 149327.037,
+    "[Achats]": 159050.232
+  },
+  {
+    "dim_temps[AnneeMois]": "2025-01",
+    "[CA HT]": 154497.876,
+    "[Marge HT]": 26623.24,
+    "[Croissance CA MoM]": 0.1938679594948183,
+    "[Encaisse]": 107023.827,
+    "[Decaisse]": 71323.427,
+    "[Achats]": 125340.011
+  },
+  {
+    "dim_temps[AnneeMois]": "2025-02",
+    "[CA HT]": 139119.422,
+    "[Marge HT]": 22083.792,
+    "[Croissance CA MoM]": -0.09953828750370652,
+    "[Encaisse]": 101454.416,
+    "[Decaisse]": 48397.414,
+    "[Achats]": 134494.695
+  },
+  {
+    "dim_temps[AnneeMois]": "2025-03",
+    "[CA HT]": 112019.927,
+    "[Marge HT]": 16689.111,
+    "[Croissance CA MoM]": -0.19479303903375908,
+    "[Encaisse]": 147902.087,
+    "[Decaisse]": 76741.543,
+    "[Achats]": 121360.121
+  },
+  {
+    "dim_temps[AnneeMois]": "2025-04",
+    "[CA HT]": 163752.04,
+    "[Marge HT]": 25219.172,
+    "[Croissance CA MoM]": 0.461811700698573,
+    "[Encaisse]": 126310.903,
+    "[Decaisse]": 208507.689,
+    "[Achats]": 135028.798
+  }
+]

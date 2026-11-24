@@ -1,0 +1,113 @@
+{
+  "checks": [
+    {
+      "check": "nine branches",
+      "passed": true
+    },
+    {
+      "check": "README main",
+      "passed": true
+    },
+    {
+      "check": "README specifications",
+      "passed": true
+    },
+    {
+      "check": "README dwh-schema",
+      "passed": true
+    },
+    {
+      "check": "README sql-server",
+      "passed": true
+    },
+    {
+      "check": "README ssis",
+      "passed": true
+    },
+    {
+      "check": "README powerbi",
+      "passed": true
+    },
+    {
+      "check": "README ml-notebooks",
+      "passed": true
+    },
+    {
+      "check": "README data",
+      "passed": true
+    },
+    {
+      "check": "README validation",
+      "passed": true
+    },
+    {
+      "check": "Python syntax",
+      "passed": true
+    },
+    {
+      "check": "Native SSIS XML",
+      "passed": true
+    },
+    {
+      "check": "Notebook health_retailers_cash_anomaly_v2_executed.ipynb",
+      "passed": true
+    },
+    {
+      "check": "Notebook health_retailers_customer_segmentation_complete_commented.ipynb",
+      "passed": true
+    },
+    {
+      "check": "Notebook health_retailers_demand_forecast_complete_commented.ipynb",
+      "passed": true
+    },
+    {
+      "check": "Notebook health_retailers_sales_anomaly_complete_commented.ipynb",
+      "passed": true
+    },
+    {
+      "check": "Power BI seven pages",
+      "passed": true
+    },
+    {
+      "check": "Power BI model identical to verified local model",
+      "passed": true
+    },
+    {
+      "check": "No local Power BI security/cache files",
+      "passed": true
+    },
+    {
+      "check": "Original files",
+      "passed": true
+    },
+    {
+      "check": "Generated files",
+      "passed": true
+    },
+    {
+      "check": "Cleaned real and generated files",
+      "passed": true
+    },
+    {
+      "check": "Authentication values removed",
+      "passed": true
+    },
+    {
+      "check": "No presentations or final report documents",
+      "passed": true
+    },
+    {
+      "check": "GitHub file limits",
+      "passed": true
+    },
+    {
+      "check": "No common private key/token signatures",
+      "passed": true
+    }
+  ],
+  "passed": 26,
+  "python_files": 8,
+  "native_xml_files": 46,
+  "oversized": [],
+  "secret_findings": []
+}

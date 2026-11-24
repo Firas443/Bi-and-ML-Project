@@ -1,0 +1,452 @@
+[
+  {
+    "name": "CA HT",
+    "dax": "EVALUATE ROW(\"value\", [CA HT])",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Quantite vendue",
+    "dax": "EVALUATE ROW(\"value\", [Quantite vendue])",
+    "sql": "SELECT SUM(QuantiteVendue) value FROM fait_ventes",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Nombre de ventes",
+    "dax": "EVALUATE ROW(\"value\", [Nombre de ventes])",
+    "sql": "SELECT COUNT(DISTINCT Document_Id) value FROM fait_ventes",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Panier moyen",
+    "dax": "EVALUATE ROW(\"value\", [Panier moyen])",
+    "sql": "SELECT SUM(CA_HT)/NULLIF(COUNT(DISTINCT Document_Id),0) value FROM fait_ventes",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Cout HT connu",
+    "dax": "EVALUATE ROW(\"value\", [Cout HT connu])",
+    "sql": "SELECT SUM(Cout_HT) value FROM fait_ventes",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA avec cout connu",
+    "dax": "EVALUATE ROW(\"value\", [CA avec cout connu])",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE Cout_HT IS NOT NULL",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Marge HT",
+    "dax": "EVALUATE ROW(\"value\", [Marge HT])",
+    "sql": "SELECT SUM(CA_HT-Cout_HT) value FROM fait_ventes WHERE Cout_HT IS NOT NULL",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Lignes sans cout",
+    "dax": "EVALUATE ROW(\"value\", [Lignes sans cout])",
+    "sql": "SELECT COUNT(*) value FROM fait_ventes WHERE Cout_HT IS NULL",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Couverture cout",
+    "dax": "EVALUATE ROW(\"value\", [Couverture cout])",
+    "sql": "SELECT 1.0*COUNT(Cout_HT)/COUNT(*) value FROM fait_ventes",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Clients actifs",
+    "dax": "EVALUATE ROW(\"value\", [Clients actifs])",
+    "sql": "SELECT COUNT(DISTINCT v.Company_Id) value FROM fait_ventes v JOIN dim_client c ON c.Client_SK=v.Client_SK WHERE c.EstClientIdentifie=1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA clients identifies",
+    "dax": "EVALUATE ROW(\"value\", [CA clients identifies])",
+    "sql": "SELECT SUM(v.CA_HT) value FROM fait_ventes v JOIN dim_client c ON c.Client_SK=v.Client_SK WHERE c.EstClientIdentifie=1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Ventes clients identifies",
+    "dax": "EVALUATE ROW(\"value\", [Ventes clients identifies])",
+    "sql": "SELECT COUNT(DISTINCT v.Document_Id) value FROM fait_ventes v JOIN dim_client c ON c.Client_SK=v.Client_SK WHERE c.EstClientIdentifie=1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Panier clients identifies",
+    "dax": "EVALUATE ROW(\"value\", [Panier clients identifies])",
+    "sql": "SELECT SUM(v.CA_HT)/NULLIF(COUNT(DISTINCT v.Document_Id),0) value FROM fait_ventes v JOIN dim_client c ON c.Client_SK=v.Client_SK WHERE c.EstClientIdentifie=1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Frequence achat client",
+    "dax": "EVALUATE ROW(\"value\", [Frequence achat client])",
+    "sql": "SELECT 1.0*COUNT(DISTINCT v.Document_Id)/NULLIF(COUNT(DISTINCT v.Company_Id),0) value FROM fait_ventes v JOIN dim_client c ON c.Client_SK=v.Client_SK WHERE c.EstClientIdentifie=1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Stock disponible",
+    "dax": "EVALUATE ROW(\"value\", [Stock disponible])",
+    "sql": "SELECT SUM(QuantiteActuelle) value FROM fait_stock_actuel",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Produits en rupture",
+    "dax": "EVALUATE ROW(\"value\", [Produits en rupture])",
+    "sql": "SELECT COUNT(DISTINCT Product_Id) value FROM fait_stock_actuel WHERE QuantiteActuelle=0",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Produits en stock faible",
+    "dax": "EVALUATE ROW(\"value\", [Produits en stock faible])",
+    "sql": "SELECT COUNT(*) value FROM fait_stock_actuel WHERE QuantiteActuelle>0 AND QuantiteActuelle<=QuantiteAlerte",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Produits sans seuil",
+    "dax": "EVALUATE ROW(\"value\", [Produits sans seuil])",
+    "sql": "SELECT COUNT(*) value FROM fait_stock_actuel WHERE QuantiteAlerte IS NULL",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant encaisse",
+    "dax": "EVALUATE ROW(\"value\", [Montant encaisse])",
+    "sql": "SELECT SUM(Amount) value FROM fait_encaissements",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant paye aux fournisseurs",
+    "dax": "EVALUATE ROW(\"value\", [Montant paye aux fournisseurs])",
+    "sql": "SELECT SUM(Amount) value FROM fait_decaissements",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Tresorerie nette",
+    "dax": "EVALUATE ROW(\"value\", [Tresorerie nette])",
+    "sql": "SELECT (SELECT SUM(Amount) FROM fait_encaissements)-(SELECT SUM(Amount) FROM fait_decaissements) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Nombre encaissements",
+    "dax": "EVALUATE ROW(\"value\", [Nombre encaissements])",
+    "sql": "SELECT COUNT(DISTINCT Payment_Id) value FROM fait_encaissements",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Nombre decaissements",
+    "dax": "EVALUATE ROW(\"value\", [Nombre decaissements])",
+    "sql": "SELECT COUNT(DISTINCT Payment_Id) value FROM fait_decaissements",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Nombre de paiements",
+    "dax": "EVALUATE ROW(\"value\", [Nombre de paiements])",
+    "sql": "SELECT COUNT(*) value FROM (SELECT Payment_Id FROM fait_encaissements UNION SELECT Payment_Id FROM fait_decaissements) x",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle vente",
+    "dax": "EVALUATE ROW(\"value\", [Montant regle vente])",
+    "sql": "SELECT SUM(Amount) value FROM fait_encaissements e WHERE EXISTS (SELECT 1 FROM fait_ventes v WHERE v.Document_Id=e.Document_Id)",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle facture fournisseur",
+    "dax": "EVALUATE ROW(\"value\", [Montant regle facture fournisseur])",
+    "sql": "SELECT SUM(Amount) value FROM fait_decaissements d WHERE EXISTS (SELECT 1 FROM fait_achats a WHERE a.Document_Id=d.Document_Id)",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Encaissements non affectes",
+    "dax": "EVALUATE ROW(\"value\", [Encaissements non affectes])",
+    "sql": "SELECT SUM(Amount) value FROM fait_encaissements WHERE Document_Id IS NULL",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Decaissements non affectes",
+    "dax": "EVALUATE ROW(\"value\", [Decaissements non affectes])",
+    "sql": "SELECT SUM(Amount) value FROM fait_decaissements WHERE Document_Id IS NULL",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Achats HT",
+    "dax": "EVALUATE ROW(\"value\", [Achats HT])",
+    "sql": "SELECT SUM(MontantAchat_HT) value FROM fait_achats",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Quantite achetee",
+    "dax": "EVALUATE ROW(\"value\", [Quantite achetee])",
+    "sql": "SELECT SUM(QuantiteAchetee) value FROM fait_achats",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Nombre factures fournisseurs",
+    "dax": "EVALUATE ROW(\"value\", [Nombre factures fournisseurs])",
+    "sql": "SELECT COUNT(DISTINCT Document_Id) value FROM fait_achats",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA HT / dim_produit 3941",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_produit[Product_Id]=3941))",
+    "sql": "SELECT SUM(f.CA_HT) value FROM fait_ventes f JOIN dim_produit d ON d.Produit_SK=f.Produit_SK WHERE d.Product_Id=3941",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA HT / dim_produit 5253",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_produit[Product_Id]=5253))",
+    "sql": "SELECT SUM(f.CA_HT) value FROM fait_ventes f JOIN dim_produit d ON d.Produit_SK=f.Produit_SK WHERE d.Product_Id=5253",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA HT / dim_produit 93",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_produit[Product_Id]=93))",
+    "sql": "SELECT SUM(f.CA_HT) value FROM fait_ventes f JOIN dim_produit d ON d.Produit_SK=f.Produit_SK WHERE d.Product_Id=93",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA HT / dim_client 2",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_client[Company_Id]=2))",
+    "sql": "SELECT SUM(f.CA_HT) value FROM fait_ventes f JOIN dim_client d ON d.Client_SK=f.Client_SK WHERE d.Company_Id=2",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA HT / dim_client 7",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_client[Company_Id]=7))",
+    "sql": "SELECT SUM(f.CA_HT) value FROM fait_ventes f JOIN dim_client d ON d.Client_SK=f.Client_SK WHERE d.Company_Id=7",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA HT / dim_client 15",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_client[Company_Id]=15))",
+    "sql": "SELECT SUM(f.CA_HT) value FROM fait_ventes f JOIN dim_client d ON d.Client_SK=f.Client_SK WHERE d.Company_Id=15",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Achats HT / dim_fournisseur 30",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Achats HT], dim_fournisseur[Fournisseur_Id]=30))",
+    "sql": "SELECT SUM(f.MontantAchat_HT) value FROM fait_achats f JOIN dim_fournisseur d ON d.Fournisseur_SK=f.Fournisseur_SK WHERE d.Fournisseur_Id=30",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Achats HT / dim_fournisseur 4",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Achats HT], dim_fournisseur[Fournisseur_Id]=4))",
+    "sql": "SELECT SUM(f.MontantAchat_HT) value FROM fait_achats f JOIN dim_fournisseur d ON d.Fournisseur_SK=f.Fournisseur_SK WHERE d.Fournisseur_Id=4",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Achats HT / dim_fournisseur 13",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Achats HT], dim_fournisseur[Fournisseur_Id]=13))",
+    "sql": "SELECT SUM(f.MontantAchat_HT) value FROM fait_achats f JOIN dim_fournisseur d ON d.Fournisseur_SK=f.Fournisseur_SK WHERE d.Fournisseur_Id=13",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant encaisse / dim_paiement -1",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant encaisse], dim_paiement[PaymentMode_Id]=-1))",
+    "sql": "SELECT SUM(f.Amount) value FROM fait_encaissements f JOIN dim_paiement d ON d.Paiement_SK=f.Paiement_SK WHERE d.PaymentMode_Id=-1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant encaisse / dim_paiement 11",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant encaisse], dim_paiement[PaymentMode_Id]=11))",
+    "sql": "SELECT SUM(f.Amount) value FROM fait_encaissements f JOIN dim_paiement d ON d.Paiement_SK=f.Paiement_SK WHERE d.PaymentMode_Id=11",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant encaisse / dim_paiement 5",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant encaisse], dim_paiement[PaymentMode_Id]=5))",
+    "sql": "SELECT SUM(f.Amount) value FROM fait_encaissements f JOIN dim_paiement d ON d.Paiement_SK=f.Paiement_SK WHERE d.PaymentMode_Id=5",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant paye aux fournisseurs / dim_fournisseur 30",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant paye aux fournisseurs], dim_fournisseur[Fournisseur_Id]=30))",
+    "sql": "SELECT SUM(f.Amount) value FROM fait_decaissements f JOIN dim_fournisseur d ON d.Fournisseur_SK=f.Fournisseur_SK WHERE d.Fournisseur_Id=30",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant paye aux fournisseurs / dim_fournisseur 36",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant paye aux fournisseurs], dim_fournisseur[Fournisseur_Id]=36))",
+    "sql": "SELECT SUM(f.Amount) value FROM fait_decaissements f JOIN dim_fournisseur d ON d.Fournisseur_SK=f.Fournisseur_SK WHERE d.Fournisseur_Id=36",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant paye aux fournisseurs / dim_fournisseur 24",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant paye aux fournisseurs], dim_fournisseur[Fournisseur_Id]=24))",
+    "sql": "SELECT SUM(f.Amount) value FROM fait_decaissements f JOIN dim_fournisseur d ON d.Fournisseur_SK=f.Fournisseur_SK WHERE d.Fournisseur_Id=24",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Stock disponible / dim_produit 1",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Stock disponible], dim_produit[Product_Id]=1))",
+    "sql": "SELECT SUM(f.QuantiteActuelle) value FROM fait_stock_actuel f JOIN dim_produit d ON d.Produit_SK=f.Produit_SK WHERE d.Product_Id=1",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Stock disponible / dim_produit 2",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Stock disponible], dim_produit[Product_Id]=2))",
+    "sql": "SELECT SUM(f.QuantiteActuelle) value FROM fait_stock_actuel f JOIN dim_produit d ON d.Produit_SK=f.Produit_SK WHERE d.Product_Id=2",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Stock disponible / dim_produit 3",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Stock disponible], dim_produit[Product_Id]=3))",
+    "sql": "SELECT SUM(f.QuantiteActuelle) value FROM fait_stock_actuel f JOIN dim_produit d ON d.Produit_SK=f.Produit_SK WHERE d.Product_Id=3",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202409",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2024, dim_temps[Mois]=9))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202409",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202409",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2024, dim_temps[Mois]=9))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202409)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202408))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202408),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202410",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2024, dim_temps[Mois]=10))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202410",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202410",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2024, dim_temps[Mois]=10))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202410)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202409))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202409),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202411",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2024, dim_temps[Mois]=11))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202411",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202411",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2024, dim_temps[Mois]=11))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202411)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202410))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202410),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202412",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2024, dim_temps[Mois]=12))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202412",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202412",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2024, dim_temps[Mois]=12))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202412)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202411))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202411),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202501",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2025, dim_temps[Mois]=1))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202501",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202501",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2025, dim_temps[Mois]=1))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202501)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202412))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202412),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202502",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2025, dim_temps[Mois]=2))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202502",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202502",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2025, dim_temps[Mois]=2))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202502)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202501))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202501),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202503",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2025, dim_temps[Mois]=3))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202503",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202503",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2025, dim_temps[Mois]=3))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202503)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202502))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202502),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "CA month 202504",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([CA HT], dim_temps[Annee]=2025, dim_temps[Mois]=4))",
+    "sql": "SELECT SUM(CA_HT) value FROM fait_ventes WHERE DateKey/100=202504",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Growth MoM 202504",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA MoM], dim_temps[Annee]=2025, dim_temps[Mois]=4))",
+    "sql": "SELECT ((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202504)-(SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202503))/NULLIF((SELECT SUM(CA_HT) FROM fait_ventes WHERE DateKey/100=202503),0) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "YoY missing history",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Croissance CA YoY], dim_temps[Annee]=2025, dim_temps[Mois]=4))",
+    "sql": "SELECT CAST(NULL AS decimal(18,4)) value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Snapshot ignores date slicer",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Stock disponible], dim_temps[Annee]=2026))",
+    "sql": "SELECT SUM(QuantiteActuelle) value FROM fait_stock_actuel",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle vente doc 12001",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant regle vente], fait_ventes[Document_Id]=12001))",
+    "sql": "SELECT SUM(Amount) value FROM fait_encaissements WHERE Document_Id=12001",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle vente doc 6917",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant regle vente], fait_ventes[Document_Id]=6917))",
+    "sql": "SELECT SUM(Amount) value FROM fait_encaissements WHERE Document_Id=6917",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle vente doc 9501",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant regle vente], fait_ventes[Document_Id]=9501))",
+    "sql": "SELECT SUM(Amount) value FROM fait_encaissements WHERE Document_Id=9501",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle facture fournisseur doc 8035",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant regle facture fournisseur], fait_achats[Document_Id]=8035))",
+    "sql": "SELECT SUM(Amount) value FROM fait_decaissements WHERE Document_Id=8035",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle facture fournisseur doc 7845",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant regle facture fournisseur], fait_achats[Document_Id]=7845))",
+    "sql": "SELECT SUM(Amount) value FROM fait_decaissements WHERE Document_Id=7845",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Montant regle facture fournisseur doc 7707",
+    "dax": "EVALUATE ROW(\"value\", CALCULATE([Montant regle facture fournisseur], fait_achats[Document_Id]=7707))",
+    "sql": "SELECT SUM(Amount) value FROM fait_decaissements WHERE Document_Id=7707",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Atelier1_Ventes_Demo",
+    "dax": "EVALUATE ROW(\"value\", COUNTROWS(Atelier1_Ventes_Demo_Validation))",
+    "sql": "SELECT 2 value",
+    "tolerance": 0.0001
+  },
+  {
+    "name": "Atelier1_Pays_Demo",
+    "dax": "EVALUATE ROW(\"value\", COUNTROWS(Atelier1_Pays_Demo_Validation))",
+    "sql": "SELECT 4 value",
+    "tolerance": 0.0001
+  }
+]

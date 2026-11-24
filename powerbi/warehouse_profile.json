@@ -1,0 +1,12 @@
+{
+  "dim_client": 82,
+  "dim_fournisseur": 116,
+  "dim_paiement": 6,
+  "dim_produit": 6842,
+  "dim_temps": 730,
+  "fait_achats": 6964,
+  "fait_decaissements": 502,
+  "fait_encaissements": 10467,
+  "fait_stock_actuel": 6842,
+  "fait_ventes": 25743
+}
