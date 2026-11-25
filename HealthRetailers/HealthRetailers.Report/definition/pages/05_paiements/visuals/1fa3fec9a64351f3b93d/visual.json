@@ -1,126 +1,16 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.15.0/schema.json",
   "name": "1fa3fec9a64351f3b93d",
   "position": {
     "x": 24,
     "y": 308,
     "z": 0,
-    "width": 794,
     "height": 468,
+    "width": 794,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
-    "drillFilterOtherVisuals": true,
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Flux de trésorerie mensuels'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#203F4D'"
-                    }
-                  }
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Segoe UI Semibold'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "border": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#DBE6E3'"
-                    }
-                  }
-                }
-              }
-            },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
+    "visualType": "areaChart",
     "query": {
       "queryState": {
         "Category": {
@@ -133,11 +23,11 @@
                       "Entity": "dim_temps"
                     }
                   },
-                  "Property": "AnneeMois"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "dim_temps.AnneeMois",
-              "nativeQueryRef": "AnneeMois"
+              "queryRef": "dim_temps.Date",
+              "nativeQueryRef": "Date"
             }
           ]
         },
@@ -151,11 +41,12 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Montant encaisse"
+                  "Property": "Encaissements - tendance"
                 }
               },
-              "queryRef": "Mesures.Montant encaisse",
-              "nativeQueryRef": "Montant encaisse"
+              "queryRef": "Mesures.Encaissements - tendance",
+              "nativeQueryRef": "Montant encaissé",
+              "displayName": "Montant encaissé"
             },
             {
               "field": {
@@ -165,14 +56,33 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Montant paye aux fournisseurs"
+                  "Property": "Decaissements - tendance"
                 }
               },
-              "queryRef": "Mesures.Montant paye aux fournisseurs",
-              "nativeQueryRef": "Montant paye aux fournisseurs"
+              "queryRef": "Mesures.Decaissements - tendance",
+              "nativeQueryRef": "Montant payé aux fournisseurs",
+              "displayName": "Montant payé aux fournisseurs"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_temps"
+                  }
+                },
+                "Property": "Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": false
       }
     },
     "objects": {
@@ -219,6 +129,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'dotted'"
+                }
+              }
+            },
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Scalar'"
                 }
               }
             }
@@ -335,7 +252,7 @@
             }
           },
           "selector": {
-            "metadata": "Mesures.Montant encaisse"
+            "metadata": "Mesures.Encaissements - tendance"
           }
         },
         {
@@ -353,10 +270,184 @@
             }
           },
           "selector": {
-            "metadata": "Mesures.Montant paye aux fournisseurs"
+            "metadata": "Mesures.Decaissements - tendance"
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
           }
         }
       ]
-    }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Mesures"
+                    }
+                  },
+                  "Property": "Titre tendance paiements"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#203F4D'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#DBE6E3'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "782aa25d673b2de70b46",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_temps"
+              }
+            },
+            "Property": "AnneeMois"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "bd92f8505c6a30ab33d6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Mesures"
+              }
+            },
+            "Property": "Montant encaisse"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cb4a410199919b3e573e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Mesures"
+              }
+            },
+            "Property": "Montant paye aux fournisseurs"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

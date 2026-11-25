@@ -1,254 +1,281 @@
 [
   {
     "name": "CA HT",
+    "description": "Cahier §6/12 : CA net HT chargé par SSIS, retours inclus, sans double comptage.",
+    "displayFolder": "01 Ventes",
     "expression": "SUM(fait_ventes[CA_HT])",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": "Cahier §6/12 : CA net HT chargé par SSIS, retours inclus, sans double comptage."
+    "lineageTag": "1ebb42f0-bbd6-4e38-879e-a18108b1abf7"
   },
   {
     "name": "Quantite vendue",
+    "displayFolder": "01 Ventes",
     "expression": "SUM(fait_ventes[QuantiteVendue])",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "a716d026-b6e9-40e0-a081-087919f481fa"
   },
   {
     "name": "Nombre de ventes",
+    "displayFolder": "01 Ventes",
     "expression": "DISTINCTCOUNT(fait_ventes[Document_Id])",
     "formatString": "#,0",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "39ec1600-b3ef-43db-a791-6af628e01d56"
   },
   {
     "name": "Panier moyen",
+    "displayFolder": "01 Ventes",
     "expression": "DIVIDE([CA HT], [Nombre de ventes])",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "1ce0d977-2367-4a52-b69b-ff98454ce6e6"
   },
   {
     "name": "CA mois precedent",
+    "displayFolder": "01 Ventes",
     "expression": "IF(HASONEVALUE(dim_temps[AnneeMois]), CALCULATE([CA HT], DATEADD(dim_temps[Date], -1, MONTH)))",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "924cd3b7-abee-4397-b08f-904eedd700d9"
   },
   {
     "name": "Croissance CA MoM",
+    "description": "Cahier : (CA N - CA N-1) / CA N-1 ; N = mois. BLANK si période de comparaison absente ou nulle. Comparer des mois complets ; septembre 2024 est partiel.",
+    "displayFolder": "01 Ventes",
     "expression": "VAR Precedent = [CA mois precedent] RETURN IF(NOT ISBLANK([CA HT]) && NOT ISBLANK(Precedent), DIVIDE([CA HT]-Precedent, Precedent))",
     "formatString": "0.00%;-0.00%;0.00%",
-    "displayFolder": "01 Ventes",
-    "description": "Cahier : (CA N - CA N-1) / CA N-1 ; N = mois. BLANK si période de comparaison absente ou nulle. Comparer des mois complets ; septembre 2024 est partiel."
+    "lineageTag": "64622dad-8d9a-4f1a-836c-1121322092c7"
   },
   {
     "name": "CA annee precedente",
+    "displayFolder": "01 Ventes",
     "expression": "IF(HASONEVALUE(dim_temps[AnneeMois]), CALCULATE([CA HT], DATEADD(dim_temps[Date], -1, YEAR)))",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "f978e0f7-16d9-4cbc-935f-739b630fc146"
   },
   {
     "name": "Croissance CA YoY",
+    "displayFolder": "01 Ventes",
     "expression": "VAR Precedent = [CA annee precedente] RETURN IF(NOT ISBLANK([CA HT]) && NOT ISBLANK(Precedent), DIVIDE([CA HT]-Precedent, Precedent))",
     "formatString": "0.00%;-0.00%;0.00%",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "47f48206-9fab-4ea3-a762-d4d070651be7"
   },
   {
     "name": "Cout HT connu",
+    "displayFolder": "01 Ventes",
     "expression": "SUM(fait_ventes[Cout_HT])",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "a13999d6-572e-4853-9c5f-56699d850ca5"
   },
   {
     "name": "CA avec cout connu",
+    "displayFolder": "01 Ventes",
     "expression": "CALCULATE([CA HT], KEEPFILTERS(NOT ISBLANK(fait_ventes[Cout_HT])))",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": ""
+    "lineageTag": "f19a1574-4b4c-4c2b-a667-8e5d360b2454"
   },
   {
     "name": "Marge HT",
+    "description": "Cahier §12 : seules les lignes dont le coût est connu entrent dans les deux termes de la marge.",
+    "displayFolder": "01 Ventes",
     "expression": "SUMX(FILTER(fait_ventes, NOT ISBLANK(fait_ventes[Cout_HT])), fait_ventes[CA_HT]-fait_ventes[Cout_HT])",
     "formatString": "#,0.00",
-    "displayFolder": "01 Ventes",
-    "description": "Cahier §12 : seules les lignes dont le coût est connu entrent dans les deux termes de la marge."
+    "lineageTag": "da4ff0a7-10e3-4fb2-9287-591b74105cd7"
   },
   {
     "name": "Lignes sans cout",
+    "displayFolder": "07 Qualite",
     "expression": "COUNTROWS(FILTER(fait_ventes, ISBLANK(fait_ventes[Cout_HT])))",
     "formatString": "#,0",
-    "displayFolder": "07 Qualite",
-    "description": ""
+    "lineageTag": "2722e7fc-6944-4337-a57b-68a9b26051c8"
   },
   {
     "name": "Couverture cout",
+    "displayFolder": "07 Qualite",
     "expression": "DIVIDE(COUNTROWS(FILTER(fait_ventes, NOT ISBLANK(fait_ventes[Cout_HT]))), COUNTROWS(fait_ventes))",
     "formatString": "0.00%",
-    "displayFolder": "07 Qualite",
-    "description": ""
+    "lineageTag": "e4ffe191-4066-4fe9-aff3-6ce24cd95c54"
   },
   {
     "name": "Clients actifs",
+    "description": "Clients identifiés ayant au moins une ligne de vente dans le contexte courant ; comptoir exclu.",
+    "displayFolder": "02 Clients",
     "expression": "CALCULATE(DISTINCTCOUNT(fait_ventes[Company_Id]), KEEPFILTERS(dim_client[EstClientIdentifie] = TRUE()))",
     "formatString": "#,0",
-    "displayFolder": "02 Clients",
-    "description": "Clients identifiés ayant au moins une ligne de vente dans le contexte courant ; comptoir exclu."
+    "lineageTag": "9f7d2c0b-19f4-426e-a6a3-32a69905c853"
   },
   {
     "name": "CA clients identifies",
+    "displayFolder": "02 Clients",
     "expression": "CALCULATE([CA HT], KEEPFILTERS(dim_client[EstClientIdentifie] = TRUE()))",
     "formatString": "#,0.00",
-    "displayFolder": "02 Clients",
-    "description": ""
+    "lineageTag": "5ab1d2c8-c058-47c7-a220-2758c0fa7956"
   },
   {
     "name": "Ventes clients identifies",
+    "displayFolder": "02 Clients",
     "expression": "CALCULATE([Nombre de ventes], KEEPFILTERS(dim_client[EstClientIdentifie] = TRUE()))",
     "formatString": "#,0",
-    "displayFolder": "02 Clients",
-    "description": ""
+    "lineageTag": "5cf78f26-5da8-4e12-abfc-fa25b17406db"
   },
   {
     "name": "Panier clients identifies",
+    "displayFolder": "02 Clients",
     "expression": "DIVIDE([CA clients identifies], [Ventes clients identifies])",
     "formatString": "#,0.00",
-    "displayFolder": "02 Clients",
-    "description": ""
+    "lineageTag": "6b37ca31-a68a-4d7a-9846-8b024c7c25f6"
   },
   {
     "name": "Frequence achat client",
+    "displayFolder": "02 Clients",
     "expression": "DIVIDE([Ventes clients identifies], [Clients actifs])",
     "formatString": "#,0.00",
-    "displayFolder": "02 Clients",
-    "description": ""
+    "lineageTag": "e101ebaf-d921-4d90-8244-f2fb41fd601a"
   },
   {
     "name": "Stock disponible",
+    "description": "Snapshot actuel non daté dans le DW ; non additif dans le temps. Pas de relation temporelle inventée.",
+    "displayFolder": "03 Stock",
     "expression": "SUM(fait_stock_actuel[QuantiteActuelle])",
     "formatString": "#,0.00",
-    "displayFolder": "03 Stock",
-    "description": "Snapshot actuel non daté dans le DW ; non additif dans le temps. Pas de relation temporelle inventée."
+    "lineageTag": "c7ad8cbf-c234-4335-a247-213ac9630cf9"
   },
   {
     "name": "Produits en rupture",
+    "displayFolder": "03 Stock",
     "expression": "CALCULATE(DISTINCTCOUNT(fait_stock_actuel[Product_Id]), KEEPFILTERS(fait_stock_actuel[QuantiteActuelle] = 0))",
     "formatString": "#,0",
-    "displayFolder": "03 Stock",
-    "description": ""
+    "lineageTag": "6426cd37-5985-488f-b4ee-b939d7de52b6"
   },
   {
     "name": "Produits en stock faible",
+    "displayFolder": "03 Stock",
     "expression": "COUNTROWS(FILTER(fait_stock_actuel, fait_stock_actuel[QuantiteActuelle] > 0 && NOT ISBLANK(fait_stock_actuel[QuantiteAlerte]) && fait_stock_actuel[QuantiteActuelle] <= fait_stock_actuel[QuantiteAlerte]))",
     "formatString": "#,0",
-    "displayFolder": "03 Stock",
-    "description": ""
+    "lineageTag": "43ec720f-5091-4823-8614-3311e2927c05"
   },
   {
     "name": "Produits sans seuil",
+    "displayFolder": "07 Qualite",
     "expression": "COUNTROWS(FILTER(fait_stock_actuel, ISBLANK(fait_stock_actuel[QuantiteAlerte])))",
     "formatString": "#,0",
-    "displayFolder": "07 Qualite",
-    "description": ""
+    "lineageTag": "06c30be1-4274-4e05-9ab6-e81974902a37"
   },
   {
     "name": "Montant encaisse",
+    "displayFolder": "04 Paiements",
     "expression": "SUM(fait_encaissements[Amount])",
     "formatString": "#,0.00",
-    "displayFolder": "04 Paiements",
-    "description": ""
+    "lineageTag": "37434f13-7d00-4dc4-94d2-b3eb21064903"
   },
   {
     "name": "Montant paye aux fournisseurs",
+    "displayFolder": "04 Paiements",
     "expression": "SUM(fait_decaissements[Amount])",
     "formatString": "#,0.00",
-    "displayFolder": "04 Paiements",
-    "description": ""
+    "lineageTag": "276697a2-3abe-4dc0-9cc7-e2032f045b4e"
   },
   {
     "name": "Tresorerie nette",
+    "displayFolder": "04 Paiements",
     "expression": "[Montant encaisse] - [Montant paye aux fournisseurs]",
     "formatString": "#,0.00",
-    "displayFolder": "04 Paiements",
-    "description": ""
+    "lineageTag": "e56df48d-0d17-410a-96dc-4fe021d95f9f"
   },
   {
     "name": "Nombre encaissements",
+    "displayFolder": "04 Paiements",
     "expression": "DISTINCTCOUNT(fait_encaissements[Payment_Id])",
     "formatString": "#,0",
-    "displayFolder": "04 Paiements",
-    "description": ""
+    "lineageTag": "0f4d26d1-60af-4dc0-9dab-cf34829db23a"
   },
   {
     "name": "Nombre decaissements",
+    "displayFolder": "04 Paiements",
     "expression": "DISTINCTCOUNT(fait_decaissements[Payment_Id])",
     "formatString": "#,0",
-    "displayFolder": "04 Paiements",
-    "description": ""
+    "lineageTag": "8cab93af-c084-47bf-b210-01484e344021"
   },
   {
     "name": "Nombre de paiements",
+    "description": "DISTINCTCOUNT logique de Payment_Id sur les deux faits ; les imputations ne sont pas des paiements supplémentaires.",
+    "displayFolder": "04 Paiements",
     "expression": "COUNTROWS(DISTINCT(UNION(SELECTCOLUMNS(fait_encaissements, \"Payment\", fait_encaissements[Payment_Id]), SELECTCOLUMNS(fait_decaissements, \"Payment\", fait_decaissements[Payment_Id]))))",
     "formatString": "#,0",
-    "displayFolder": "04 Paiements",
-    "description": "DISTINCTCOUNT logique de Payment_Id sur les deux faits ; les imputations ne sont pas des paiements supplémentaires."
+    "lineageTag": "ba617cde-85ee-4147-b086-ea860069bc49"
   },
   {
     "name": "Montant regle vente",
+    "description": "Imputations des documents de vente visibles ; ne pas sommer après répétition par ligne produit. La période filtre la date de paiement et de vente.",
+    "displayFolder": "05 Reglements documents",
     "expression": "CALCULATE([Montant encaisse], KEEPFILTERS(TREATAS(VALUES(fait_ventes[Document_Id]), fait_encaissements[Document_Id])))",
     "formatString": "#,0.00",
-    "displayFolder": "05 Reglements documents",
-    "description": "Imputations des documents de vente visibles ; ne pas sommer après répétition par ligne produit. La période filtre la date de paiement et de vente."
+    "lineageTag": "143f56fe-9591-4ef8-8ea8-b69905e7a79c"
   },
   {
     "name": "Montant regle facture fournisseur",
+    "displayFolder": "05 Reglements documents",
     "expression": "CALCULATE([Montant paye aux fournisseurs], KEEPFILTERS(TREATAS(VALUES(fait_achats[Document_Id]), fait_decaissements[Document_Id])))",
     "formatString": "#,0.00",
-    "displayFolder": "05 Reglements documents",
-    "description": ""
+    "lineageTag": "bb375bb6-e459-46de-abd3-5480704d2a83"
   },
   {
     "name": "Encaissements non affectes",
+    "displayFolder": "07 Qualite",
     "expression": "CALCULATE([Montant encaisse], KEEPFILTERS(ISBLANK(fait_encaissements[Document_Id])))",
     "formatString": "#,0.00",
-    "displayFolder": "07 Qualite",
-    "description": ""
+    "lineageTag": "3e31a0ef-a1d5-4eab-a18a-c1ee08d903ed"
   },
   {
     "name": "Decaissements non affectes",
+    "displayFolder": "07 Qualite",
     "expression": "CALCULATE([Montant paye aux fournisseurs], KEEPFILTERS(ISBLANK(fait_decaissements[Document_Id])))",
     "formatString": "#,0.00",
-    "displayFolder": "07 Qualite",
-    "description": ""
+    "lineageTag": "31dc0bd7-c092-4ab6-add5-c13dcd300beb"
   },
   {
     "name": "Achats HT",
+    "displayFolder": "06 Achats",
     "expression": "SUM(fait_achats[MontantAchat_HT])",
     "formatString": "#,0.00",
-    "displayFolder": "06 Achats",
-    "description": ""
+    "lineageTag": "5b7d780d-9aa0-4606-8b5f-7e2ce3e072db"
   },
   {
     "name": "Quantite achetee",
+    "displayFolder": "06 Achats",
     "expression": "SUM(fait_achats[QuantiteAchetee])",
     "formatString": "#,0.00",
-    "displayFolder": "06 Achats",
-    "description": ""
+    "lineageTag": "d8d9000e-9514-4e79-a971-a4c26b7a1640"
   },
   {
     "name": "Nombre factures fournisseurs",
+    "displayFolder": "06 Achats",
     "expression": "DISTINCTCOUNT(fait_achats[Document_Id])",
     "formatString": "#,0",
-    "displayFolder": "06 Achats",
-    "description": ""
+    "lineageTag": "8cac65b0-9898-4f91-8328-17091279f603"
   },
   {
     "name": "Derniere date ventes",
+    "displayFolder": "07 Qualite",
     "expression": "MAXX(ALL(fait_ventes), RELATED(dim_temps[Date]))",
     "formatString": "dd/MM/yyyy",
-    "displayFolder": "07 Qualite",
-    "description": ""
+    "lineageTag": "5769dc66-b6fe-4c74-99d6-254d7cb24430"
+  },
+  {
+    "name": "Encaissements - tendance",
+    "expression": "VAR DatesSelectionnees = ALLSELECTED(dim_temps)\nVAR NombreMois = COUNTROWS(SUMMARIZE(DatesSelectionnees, dim_temps[AnneeMois]))\nVAR DateAxe = MAX(dim_temps[Date])\nVAR MoisAxe = MAX(dim_temps[AnneeMois])\nVAR DatesDuMois = FILTER(DatesSelectionnees, dim_temps[AnneeMois] = MoisAxe)\nVAR FinDuMoisSelectionne = MAXX(DatesDuMois, dim_temps[Date])\nRETURN\n    IF(\n        NombreMois = 1,\n        [Montant encaisse],\n        IF(\n            DateAxe = FinDuMoisSelectionne,\n            CALCULATE([Montant encaisse], REMOVEFILTERS(dim_temps), DatesDuMois)\n        )\n    )",
+    "formatString": "#,0.00;-#,0.00;0.00",
+    "displayFolder": "08 Tendances adaptatives",
+    "description": "Daily points for one selected month; otherwise one monthly total at the last selected calendar date of each month. Existing business filters and missing values are preserved."
+  },
+  {
+    "name": "Decaissements - tendance",
+    "expression": "VAR DatesSelectionnees = ALLSELECTED(dim_temps)\nVAR NombreMois = COUNTROWS(SUMMARIZE(DatesSelectionnees, dim_temps[AnneeMois]))\nVAR DateAxe = MAX(dim_temps[Date])\nVAR MoisAxe = MAX(dim_temps[AnneeMois])\nVAR DatesDuMois = FILTER(DatesSelectionnees, dim_temps[AnneeMois] = MoisAxe)\nVAR FinDuMoisSelectionne = MAXX(DatesDuMois, dim_temps[Date])\nRETURN\n    IF(\n        NombreMois = 1,\n        [Montant paye aux fournisseurs],\n        IF(\n            DateAxe = FinDuMoisSelectionne,\n            CALCULATE([Montant paye aux fournisseurs], REMOVEFILTERS(dim_temps), DatesDuMois)\n        )\n    )",
+    "formatString": "#,0.00;-#,0.00;0.00",
+    "displayFolder": "08 Tendances adaptatives",
+    "description": "Daily points for one selected month; otherwise one monthly total at the last selected calendar date of each month. Existing business filters and missing values are preserved."
+  },
+  {
+    "name": "Titre tendance paiements",
+    "expression": "\"Flux de trésorerie\" & IF(HASONEVALUE(dim_temps[AnneeMois]), \" par jour\", \" par mois\")",
+    "displayFolder": "08 Tendances adaptatives",
+    "isHidden": true
   }
 ]

@@ -1015,6 +1015,26 @@
             "formatString": "dd/MM/yyyy",
             "displayFolder": "07 Qualite",
             "description": ""
+          },
+          {
+            "name": "Encaissements - tendance",
+            "expression": "VAR DatesSelectionnees = ALLSELECTED(dim_temps)\nVAR NombreMois = COUNTROWS(SUMMARIZE(DatesSelectionnees, dim_temps[AnneeMois]))\nVAR DateAxe = MAX(dim_temps[Date])\nVAR MoisAxe = MAX(dim_temps[AnneeMois])\nVAR DatesDuMois = FILTER(DatesSelectionnees, dim_temps[AnneeMois] = MoisAxe)\nVAR FinDuMoisSelectionne = MAXX(DatesDuMois, dim_temps[Date])\nRETURN\n    IF(\n        NombreMois = 1,\n        [Montant encaisse],\n        IF(\n            DateAxe = FinDuMoisSelectionne,\n            CALCULATE([Montant encaisse], REMOVEFILTERS(dim_temps), DatesDuMois)\n        )\n    )",
+            "formatString": "#,0.00;-#,0.00;0.00",
+            "displayFolder": "08 Tendances adaptatives",
+            "description": "Daily points for one selected month; otherwise one monthly total at the last selected calendar date of each month. Existing business filters and missing values are preserved."
+          },
+          {
+            "name": "Decaissements - tendance",
+            "expression": "VAR DatesSelectionnees = ALLSELECTED(dim_temps)\nVAR NombreMois = COUNTROWS(SUMMARIZE(DatesSelectionnees, dim_temps[AnneeMois]))\nVAR DateAxe = MAX(dim_temps[Date])\nVAR MoisAxe = MAX(dim_temps[AnneeMois])\nVAR DatesDuMois = FILTER(DatesSelectionnees, dim_temps[AnneeMois] = MoisAxe)\nVAR FinDuMoisSelectionne = MAXX(DatesDuMois, dim_temps[Date])\nRETURN\n    IF(\n        NombreMois = 1,\n        [Montant paye aux fournisseurs],\n        IF(\n            DateAxe = FinDuMoisSelectionne,\n            CALCULATE([Montant paye aux fournisseurs], REMOVEFILTERS(dim_temps), DatesDuMois)\n        )\n    )",
+            "formatString": "#,0.00;-#,0.00;0.00",
+            "displayFolder": "08 Tendances adaptatives",
+            "description": "Daily points for one selected month; otherwise one monthly total at the last selected calendar date of each month. Existing business filters and missing values are preserved."
+          },
+          {
+            "name": "Titre tendance paiements",
+            "expression": "\"Flux de trésorerie\" & IF(HASONEVALUE(dim_temps[AnneeMois]), \" par jour\", \" par mois\")",
+            "displayFolder": "08 Tendances adaptatives",
+            "isHidden": true
           }
         ]
       }
